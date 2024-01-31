@@ -9,7 +9,7 @@ namespace CPW211_MurderMystery
 
         private void label1_Click(object sender, EventArgs e)
         {
-            C
+            
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
