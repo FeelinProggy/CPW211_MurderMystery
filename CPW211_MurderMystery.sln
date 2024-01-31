@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34525.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CPW211_MurderMystery", "CPW211_MurderMystery.csproj", "{11F57351-69E1-4E89-8505-6FD63295DCDA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11F57351-69E1-4E89-8505-6FD63295DCDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11F57351-69E1-4E89-8505-6FD63295DCDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11F57351-69E1-4E89-8505-6FD63295DCDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11F57351-69E1-4E89-8505-6FD63295DCDA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2F534466-1052-4993-BE7A-847A1C79653D}
+	EndGlobalSection
+EndGlobal
