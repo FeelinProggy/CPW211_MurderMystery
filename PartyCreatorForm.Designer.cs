@@ -1,6 +1,6 @@
 ﻿namespace CPW211_MurderMystery
 {
-    partial class Form1
+    partial class PartyCreatorForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -77,7 +77,6 @@
             label1.Size = new Size(96, 15);
             label1.TabIndex = 3;
             label1.Text = "Choose a theme:";
-            label1.Click += label1_Click;
             // 
             // button2
             // 
@@ -127,7 +126,6 @@
             label3.Size = new Size(160, 17);
             label3.TabIndex = 9;
             label3.Text = "How do you want to play?";
-            label3.Click += label3_Click;
             // 
             // label4
             // 
