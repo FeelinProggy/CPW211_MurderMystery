@@ -13,11 +13,11 @@ namespace CPW211_MurderMystery
         [Key]
         public int ThemeId { get; set; }
 
-        [Required]
+        //[Required]
         [MaxLength(100)]
         public string Title { get; set; }
 
-        [Required]
+        //[Required]
         [MaxLength(500)]
         public string Summary { get; set; }
 
