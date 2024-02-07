@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace CPW211_MurderMystery
 {
-    internal class PlayerContext : DbContext
+    internal class MurderMysteryContext : DbContext
     {
-        public PlayerContext() {
+        public MurderMysteryContext() {
         
         }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
