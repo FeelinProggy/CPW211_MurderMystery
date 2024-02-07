@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace CPW211_MurderMystery
     public class Theme
     {
         [Key]
-        private int themeId { get; set; }
+        public int ThemeId { get; set; }
 
         [Required]
         [MaxLength(100)]

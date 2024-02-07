@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CPW211_MurderMystery
 {
-    class ThemeContext : DbContext
+    public class ThemeContext : DbContext
     {
         public ThemeContext()
         {
