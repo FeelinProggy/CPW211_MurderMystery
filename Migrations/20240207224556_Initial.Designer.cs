@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CPW211_MurderMystery.Migrations
 {
-    [DbContext(typeof(PlayerContext))]
-    [Migration("20240201000817_Initial")]
+    [DbContext(typeof(MurderMysteryContext))]
+    [Migration("20240207224556_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
