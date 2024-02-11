@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -23,6 +24,19 @@ namespace CPW211_MurderMystery.Migrations
                 {
                     table.PrimaryKey("PK_Players", x => x.PlayerId);
                 });
+
+            migrationBuilder.CreateTable(//I may have to move this later, consulting Joe about it. I have all the seed data ready for when the table is working. -W
+                name: "Themes",
+                columns: table => new
+                {
+                    ThemeId = table.Column<int>(type:"int", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
+                    Summary = table.Column<string>(type: "nvarchar(max)", maxLength: 150, nullable: false),
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Players", x => x.ThemeId);
+                });
         }
 
         /// <inheritdoc />
@@ -30,6 +44,8 @@ namespace CPW211_MurderMystery.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Players");
+            migrationBuilder.DropTable(
+                name: "Themes");
         }
     }
 }
