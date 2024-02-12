@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CPW211_MurderMystery
 {
-    internal class MurderMysteryContext : DbContext
+    public class MurderMysteryContext : DbContext
     {
         public MurderMysteryContext() {
         
@@ -17,6 +17,7 @@ namespace CPW211_MurderMystery
             options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=CPW211_MurderMystery;Trusted_Connection=True;");
         }
 
-        public DbSet<Player> Players { get; set; }
+        public DbSet<Player> Players { get; set; };
+        
     }
 }
