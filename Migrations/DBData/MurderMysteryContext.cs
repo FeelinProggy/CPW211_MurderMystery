@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CPW211_MurderMystery
 {
-    internal class MurderMysteryContext : DbContext
+    public class MurderMysteryContext : DbContext
     {
         public MurderMysteryContext() {
         
