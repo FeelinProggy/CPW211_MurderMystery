@@ -18,7 +18,6 @@ namespace CPW211_MurderMystery
         }
 
         public DbSet<Player> Players { get; set; }
-        public DbSet<Character> Characters { get; set; }
         public DbSet<Theme> Themes { get; set; }
     }
 }
