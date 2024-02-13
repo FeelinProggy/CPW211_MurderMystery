@@ -30,6 +30,43 @@ namespace CPW211_MurderMystery
             }
         }
 
+        /// <summary>
+        /// Removes the selected Player from the database.
+        /// </summary>
+        /// <param name="playerToRemove"></param>
+        private void RemovePlayer(string playerToRemove)
+        {
+            lstPlayers.Items.RemoveAt(lstPlayers.SelectedIndex);
+
+            using (var context = new MurderMysteryContext())
+            {
+                var player = context.Players.FirstOrDefault(p => p.PlayerFullName == playerToRemove);
+
+                if (player != null)
+                {
+                    context.Players.Remove(player);
+                    context.SaveChanges();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Trims "lstPlayers" selected item so only the PlayerFullName is left.
+        /// </summary>
+        /// <returns>Returns a trimmed version of the string.</returns>
+        private string PlayerToRemoveTrim()
+        {
+            string playerToRemove = lstPlayers.SelectedItem.ToString();
+            string trimCharacter = " :";
+            int index = playerToRemove.IndexOf(trimCharacter);
+            if (index >= 0)
+            {
+                playerToRemove = playerToRemove.Substring(0, index);
+            }
+
+            return playerToRemove;
+        }
+
         private void btnAddPlayers_Click(object sender, EventArgs e)
         {
             AddPlayerForm addPlayer = new AddPlayerForm();
@@ -38,7 +75,11 @@ namespace CPW211_MurderMystery
 
         private void btnRemovePlayers_Click(object sender, EventArgs e)
         {
-
+            if (lstPlayers.SelectedIndex != -1)
+            {
+                string playerToRemove = PlayerToRemoveTrim();
+                RemovePlayer(playerToRemove);
+            }
         }
     }
 }
