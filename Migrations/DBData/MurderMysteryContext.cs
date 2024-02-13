@@ -17,7 +17,9 @@ namespace CPW211_MurderMystery
             options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=CPW211_MurderMystery;Trusted_Connection=True;");
         }
 
-        public DbSet<Player> Players { get; set; };
-        
+        public DbSet<Player> Players { get; set; }
+
+        public DbSet<Theme> Themes { get; set; }
+
     }
 }

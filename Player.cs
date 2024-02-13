@@ -10,21 +10,23 @@ namespace CPW211_MurderMystery
     public class Player
     {
         /// <summary>
-        /// The player id
+        /// The player id.
         /// </summary>
         [Key]
         public int PlayerId { get; set; }
 
         /// <summary>
-        /// The player name
+        /// The player name.
         /// </summary>
         [Required]
         [MaxLength(150)]
         public string PlayerFullName { get; set; }
 
         /// <summary>
-        /// The players gender
+        /// The player gender.
         /// </summary>
+        [Required]
+        [StringLength(13)]
         public string PlayerGender { get; set; }
     }
 }

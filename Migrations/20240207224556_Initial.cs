@@ -35,7 +35,7 @@ namespace CPW211_MurderMystery.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Players", x => x.ThemeId);
+                    table.PrimaryKey("PK_Themes", x => x.ThemeId);
                 });
         }
 
