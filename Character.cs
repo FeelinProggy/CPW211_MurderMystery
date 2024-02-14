@@ -1,33 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+
 
 namespace CPW211_MurderMystery
 {
-    internal class Character
+    public class Character
     {
-        private int _characterId;
-
-        public Character(string fullName, string gender, string occupation, string script, string description, string assignedPlayer)
-        {
-            FullName = fullName;
-            Gender = gender;
-            Occupation = occupation;
-            CharScript = script;
-            Desc = description;
-            Player = assignedPlayer;
-        }
 
         /// <summary>
         /// Characters Id number
         /// </summary>
-        public int CharacterId
-        {
-            get { return _characterId; }
-            set { _characterId = value; }
-        }
+        [Key]
+        public int CharacterId { get; set; }
+    
 
         /// <summary>
         /// Characters first and last name
@@ -54,10 +38,6 @@ namespace CPW211_MurderMystery
         /// </summary>
         public string Desc { get; set; }
 
-        /// <summary>
-        /// ?
-        /// </summary>
-        public string Player { get; set; }
-
     }
+
 }

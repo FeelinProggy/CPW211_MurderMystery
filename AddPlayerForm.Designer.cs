@@ -28,105 +28,119 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            radioButton1 = new RadioButton();
-            radioButton2 = new RadioButton();
-            radioButton3 = new RadioButton();
-            label1 = new Label();
-            label2 = new Label();
-            button1 = new Button();
-            button2 = new Button();
+            txtPlayerName = new TextBox();
+            rdoPlayerMale = new RadioButton();
+            rdoPlayerFemale = new RadioButton();
+            rdoPlayerNone = new RadioButton();
+            lblPlayerName = new Label();
+            lblCharacterPreference = new Label();
+            btnSubmitSingle = new Button();
+            btnSubmitMulti = new Button();
+            btnClose = new Button();
             SuspendLayout();
             // 
-            // textBox1
+            // txtPlayerName
             // 
-            textBox1.Location = new Point(86, 12);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 0;
+            txtPlayerName.Location = new Point(86, 12);
+            txtPlayerName.Name = "txtPlayerName";
+            txtPlayerName.Size = new Size(100, 23);
+            txtPlayerName.TabIndex = 1;
             // 
-            // radioButton1
+            // rdoPlayerMale
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(86, 66);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(51, 19);
-            radioButton1.TabIndex = 1;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Male";
-            radioButton1.UseVisualStyleBackColor = true;
+            rdoPlayerMale.AutoSize = true;
+            rdoPlayerMale.Location = new Point(86, 66);
+            rdoPlayerMale.Name = "rdoPlayerMale";
+            rdoPlayerMale.Size = new Size(51, 19);
+            rdoPlayerMale.TabIndex = 2;
+            rdoPlayerMale.TabStop = true;
+            rdoPlayerMale.Text = "Male";
+            rdoPlayerMale.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rdoPlayerFemale
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(86, 91);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(63, 19);
-            radioButton2.TabIndex = 2;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Female";
-            radioButton2.UseVisualStyleBackColor = true;
+            rdoPlayerFemale.AutoSize = true;
+            rdoPlayerFemale.Location = new Point(86, 91);
+            rdoPlayerFemale.Name = "rdoPlayerFemale";
+            rdoPlayerFemale.Size = new Size(63, 19);
+            rdoPlayerFemale.TabIndex = 2;
+            rdoPlayerFemale.TabStop = true;
+            rdoPlayerFemale.Text = "Female";
+            rdoPlayerFemale.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // rdoPlayerNone
             // 
-            radioButton3.AutoSize = true;
-            radioButton3.Location = new Point(86, 116);
-            radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(100, 19);
-            radioButton3.TabIndex = 3;
-            radioButton3.TabStop = true;
-            radioButton3.Text = "No Preference";
-            radioButton3.UseVisualStyleBackColor = true;
+            rdoPlayerNone.AutoSize = true;
+            rdoPlayerNone.Location = new Point(86, 116);
+            rdoPlayerNone.Name = "rdoPlayerNone";
+            rdoPlayerNone.Size = new Size(100, 19);
+            rdoPlayerNone.TabIndex = 2;
+            rdoPlayerNone.TabStop = true;
+            rdoPlayerNone.Text = "No Preference";
+            rdoPlayerNone.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // lblPlayerName
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(6, 15);
-            label1.Name = "label1";
-            label1.Size = new Size(74, 15);
-            label1.TabIndex = 4;
-            label1.Text = "Player Name";
+            lblPlayerName.AutoSize = true;
+            lblPlayerName.Location = new Point(6, 15);
+            lblPlayerName.Name = "lblPlayerName";
+            lblPlayerName.Size = new Size(74, 15);
+            lblPlayerName.TabIndex = 0;
+            lblPlayerName.Text = "Player Name";
             // 
-            // label2
+            // lblCharacterPreference
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(69, 48);
-            label2.Name = "label2";
-            label2.Size = new Size(117, 15);
-            label2.TabIndex = 5;
-            label2.Text = "Character Preference";
+            lblCharacterPreference.AutoSize = true;
+            lblCharacterPreference.Location = new Point(69, 48);
+            lblCharacterPreference.Name = "lblCharacterPreference";
+            lblCharacterPreference.Size = new Size(117, 15);
+            lblCharacterPreference.TabIndex = 0;
+            lblCharacterPreference.Text = "Character Preference";
             // 
-            // button1
+            // btnSubmitSingle
             // 
-            button1.Location = new Point(229, 64);
-            button1.Name = "button1";
-            button1.Size = new Size(104, 43);
-            button1.TabIndex = 6;
-            button1.Text = "Submit and Close";
-            button1.UseVisualStyleBackColor = true;
+            btnSubmitSingle.Location = new Point(229, 64);
+            btnSubmitSingle.Name = "btnSubmitSingle";
+            btnSubmitSingle.Size = new Size(104, 43);
+            btnSubmitSingle.TabIndex = 4;
+            btnSubmitSingle.Text = "Submit and Close";
+            btnSubmitSingle.UseVisualStyleBackColor = true;
+            btnSubmitSingle.Click += btnSubmitSingle_Click;
             // 
-            // button2
+            // btnSubmitMulti
             // 
-            button2.Location = new Point(229, 15);
-            button2.Name = "button2";
-            button2.Size = new Size(104, 43);
-            button2.TabIndex = 7;
-            button2.Text = "Submit and Add Another Player";
-            button2.UseVisualStyleBackColor = true;
+            btnSubmitMulti.Location = new Point(229, 15);
+            btnSubmitMulti.Name = "btnSubmitMulti";
+            btnSubmitMulti.Size = new Size(104, 43);
+            btnSubmitMulti.TabIndex = 3;
+            btnSubmitMulti.Text = "Submit and Add Another Player";
+            btnSubmitMulti.UseVisualStyleBackColor = true;
+            btnSubmitMulti.Click += btnSubmitMulti_Click;
+            // 
+            // btnClose
+            // 
+            btnClose.Location = new Point(229, 116);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(104, 26);
+            btnClose.TabIndex = 5;
+            btnClose.Text = "Close";
+            btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += btnClose_Click;
             // 
             // AddPlayerForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(367, 167);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(radioButton3);
-            Controls.Add(radioButton2);
-            Controls.Add(radioButton1);
-            Controls.Add(textBox1);
+            Controls.Add(btnClose);
+            Controls.Add(btnSubmitMulti);
+            Controls.Add(btnSubmitSingle);
+            Controls.Add(lblCharacterPreference);
+            Controls.Add(lblPlayerName);
+            Controls.Add(rdoPlayerNone);
+            Controls.Add(rdoPlayerFemale);
+            Controls.Add(rdoPlayerMale);
+            Controls.Add(txtPlayerName);
             Name = "AddPlayerForm";
             Text = "AddPlayerForm";
             ResumeLayout(false);
@@ -135,13 +149,14 @@
 
         #endregion
 
-        private TextBox textBox1;
-        private RadioButton radioButton1;
-        private RadioButton radioButton2;
-        private RadioButton radioButton3;
-        private Label label1;
-        private Label label2;
-        private Button button1;
-        private Button button2;
+        private TextBox txtPlayerName;
+        private RadioButton rdoPlayerMale;
+        private RadioButton rdoPlayerFemale;
+        private RadioButton rdoPlayerNone;
+        private Label lblPlayerName;
+        private Label lblCharacterPreference;
+        private Button btnSubmitSingle;
+        private Button btnSubmitMulti;
+        private Button btnClose;
     }
 }
