@@ -18,14 +18,14 @@ namespace CPW211_MurderMystery
         /// <summary>
         /// The player name.
         /// </summary>
-        [Required]
+        //[Required]
         [MaxLength(150)]
         public string PlayerFullName { get; set; }
 
         /// <summary>
         /// The player gender.
         /// </summary>
-        [Required]
+        //[Required]
         [StringLength(13)]
         public string PlayerGender { get; set; }
     }
