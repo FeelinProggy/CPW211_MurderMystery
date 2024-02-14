@@ -38,8 +38,23 @@ namespace CPW211_MurderMystery
                 new Character { CharacterId = 9, FullName = "Jamie Honey", Gender = "Male", Occupation = "Waiter", CharScript = "TDB", Desc = "Son of Walter and Silvia. Jamie was often babysat by Deimos as a child, and the two are still very close to this day. Jamie is also friends with Elliot, and often spends time in his library. Although, while the two enjoy talking, Jamie can’t say he knows much about Elliot personally." },
                 new Character { CharacterId = 10, FullName = "Elliot Perry", Gender = "Male", Occupation = "Librarian", CharScript = "TDB", Desc = "Friend of Jamie, but much of his past is a mystery to Jamie." }
             );
+
+            modelBuilder.Entity<Theme>().HasData(
+                new Theme
+                {
+                    ThemeId = 1,
+                    Title = "Mansion Party",
+                    Summary = "The town business tycoon is hosting a mascarade at her " +
+                               "manor to celebrate her sons taking over of the family company."
+                },
+                new Theme
+                {
+                    ThemeId = 2,
+                    Title = "Train",
+                    Summary = "This train is on a two hour nonstop trip to the next city over." +
+                              "As this specific route goes through the countryside, phone connections are spotty at best."
+                }
+                );
         }
-
-
-    }
+        }
 }
