@@ -10,14 +10,13 @@ namespace CPW211_MurderMystery
     {
         private int _characterId;
 
-        public Character(string fullName, string gender, string occupation, string script, string description, string assignedPlayer)
+        public Character(string fullName, string gender, string occupation, string script, string description)
         {
             FullName = fullName;
             Gender = gender;
             Occupation = occupation;
             CharScript = script;
             Desc = description;
-            Player = assignedPlayer;
         }
 
         /// <summary>
@@ -54,10 +53,6 @@ namespace CPW211_MurderMystery
         /// </summary>
         public string Desc { get; set; }
 
-        /// <summary>
-        /// ?
-        /// </summary>
-        public string Player { get; set; }
 
     }
 }
