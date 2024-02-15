@@ -190,6 +190,20 @@ namespace CPW211_MurderMystery.Migrations
                     b.HasKey("ThemeId");
 
                     b.ToTable("Themes");
+
+                    b.HasData(
+                        new
+                        {
+                            ThemeId = 1,
+                            Summary = "The town business tycoon is hosting a mascarade at her manor to celebrate her sons taking over of the family company.",
+                            Title = "Mansion Party"
+                        },
+                        new
+                        {
+                            ThemeId = 2,
+                            Summary = "This train is on a two hour nonstop trip to the next city over.As this specific route goes through the countryside, phone connections are spotty at best.",
+                            Title = "Train"
+                        });
                 });
 #pragma warning restore 612, 618
         }
