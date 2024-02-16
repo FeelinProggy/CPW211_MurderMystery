@@ -1,26 +1,28 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CPW211_MurderMystery
 {
-    public class Theme
-    {
-        [Key]
-        public int ThemeId { get; set; }
+	/// <summary>
+	/// The Themes for the game.
+	/// </summary>
+	public class Theme
+	{
+		/// <summary>
+		/// The Theme Id.
+		/// </summary>
+		[Key]
+		public int ThemeId { get; set; }
 
-        //[Required]
-        [MaxLength(100)]
-        public string Title { get; set; }
+		/// <summary>
+		/// The Theme title.
+		/// </summary>
+		[StringLength(50)]
+		public string Title { get; set; }
 
-        //[Required]
-        [MaxLength(500)]
-        public string Summary { get; set; }
-
-    }
-
+		/// <summary>
+		/// The Theme Summary.
+		/// </summary>
+		[StringLength(500)]
+		public string Summary { get; set; }
+	}
 }

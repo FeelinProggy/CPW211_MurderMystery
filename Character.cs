@@ -1,43 +1,46 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-
 namespace CPW211_MurderMystery
 {
-    public class Character
-    {
+	/// <summary>
+	/// The Characters for the game.
+	/// </summary>
+	public class Character
+	{
+		/// <summary>
+		/// The Characters Id number.
+		/// </summary>
+		[Key]
+		public int CharacterId { get; set; }
 
-        /// <summary>
-        /// Characters Id number
-        /// </summary>
-        [Key]
-        public int CharacterId { get; set; }
-    
+		/// <summary>
+		/// The Characters first and last name.
+		/// </summary>
+		[StringLength(50)]
+		public string FullName { get; set; }
 
-        /// <summary>
-        /// Characters first and last name
-        /// </summary>
-        public string FullName { get; set; }
-        
-        /// <summary>
-        /// Characters gender
-        /// </summary>
-        public string Gender { get; set; }
+		/// <summary>
+		/// The Characters gender.
+		/// </summary>
+		[StringLength(13)]
+		public string Gender { get; set; }
 
-        /// <summary>
-        /// Characters job
-        /// </summary>
-        public string Occupation { get; set; }
+		/// <summary>
+		/// The Characters job.
+		/// </summary>
+		[StringLength(50)]
+		public string Occupation { get; set; }
 
-        /// <summary>
-        /// Character's quotes
-        /// </summary>
-        public string CharScript { get; set; }
+		/// <summary>
+		/// The Character's quotes.
+		/// </summary>
+		[StringLength(500)]
+		public string CharScript { get; set; }
 
-        /// <summary>
-        /// Description of the character and their personality
-        /// </summary>
-        public string Desc { get; set; }
-
-    }
-
+		/// <summary>
+		/// The Description of the character and their personality.
+		/// </summary>
+		[StringLength(500)]
+		public string Desc { get; set; }
+	}
 }

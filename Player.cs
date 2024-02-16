@@ -1,32 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CPW211_MurderMystery
 {
-    public class Player
-    {
-        /// <summary>
-        /// The player id.
-        /// </summary>
-        [Key]
-        public int PlayerId { get; set; }
+	/// <summary>
+	/// The Players for the game.
+	/// </summary>
+	public class Player
+	{
+		/// <summary>
+		/// The Player Id.
+		/// </summary>
+		[Key]
+		public int PlayerId { get; set; }
 
-        /// <summary>
-        /// The player name.
-        /// </summary>
-        //[Required]
-        [MaxLength(150)]
-        public string PlayerFullName { get; set; }
+		/// <summary>
+		/// The Player name.
+		/// </summary>
+		[StringLength(50)]
+		public string PlayerFullName { get; set; }
 
-        /// <summary>
-        /// The player gender.
-        /// </summary>
-        //[Required]
-        [StringLength(13)]
-        public string PlayerGender { get; set; }
-    }
+		/// <summary>
+		/// The Player gender.
+		/// </summary>
+		[StringLength(13)]
+		public string PlayerGender { get; set; }
+	}
 }
