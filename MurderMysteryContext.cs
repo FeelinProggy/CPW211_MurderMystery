@@ -50,7 +50,7 @@ namespace CPW211_MurderMystery
 
             modelBuilder.Entity<Player>().ToTable(b => b.HasCheckConstraint("CK_PlayerGender", "[PlayerGender] IN ('Male', 'Female', 'No preference')"));
 
-            // Set up the foreign key relationship. One Theme to many Characters
+            // Set up the foreign key relationship. One Theme to many characters
             modelBuilder.Entity<Character>().HasOne(c => c.Theme).WithMany(t => t.Characters).HasForeignKey(c => c.ThemeId);
         }
     }
