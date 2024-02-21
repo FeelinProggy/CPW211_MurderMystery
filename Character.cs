@@ -14,6 +14,17 @@ namespace CPW211_MurderMystery
         public int CharacterId { get; set; }
 
         /// <summary>
+        /// Foreign key to the Character's story Theme.
+        /// </summary>
+        public int ThemeId { get; set; }
+
+        /// <summary>
+        /// Navigation property for the 
+        /// Character's Theme.
+        /// </summary>
+        public Theme Theme { get; set; }
+
+        /// <summary>
         /// The Characters first and last name.
         /// </summary>
         [StringLength(50)]

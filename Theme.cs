@@ -24,5 +24,11 @@ namespace CPW211_MurderMystery
         /// </summary>
         [StringLength(500)]
         public string Summary { get; set; }
+
+        /// <summary>
+        /// Navigation property for the 
+        /// Characters in the Theme.
+        /// </summary>
+        public ICollection<Character> Characters { get; set; } 
     }
 }
