@@ -8,7 +8,7 @@ Once the user has filled in all necessary data, they can either download their c
 
 ## Requirements
 - **Visual Studio 2022**
-- **ASP.NET & web development workload**
+- **.NET Desktop Development Workload**
 - **.NET Version 8.0**
 
 ## Create the Database
@@ -18,7 +18,7 @@ Once the user has filled in all necessary data, they can either download their c
       
 _Once your NuGet packages have finished installing:_   
 2. Open the **Package Manager** (Tools -> NuGet Package Manager -> Package Manager Console)   
-3. Execute the command “Update-Database” (no spaces!)   
+3. Execute the command `Update-Database` (no spaces!)   
 4. Check your **SQL Server Object Explorer** for the **CPW211_MurderMystery database** under localdb.    
 5. Done!   
 
