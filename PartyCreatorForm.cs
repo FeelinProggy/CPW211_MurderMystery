@@ -16,30 +16,30 @@ namespace CPW211_MurderMystery
             lstPlayers.Items.Clear();
 
             using MurderMysteryContext context = new();
-            var player = context.Players.Select(p => new { p.PlayerFullName, p.PlayerGender }).ToList();
+            var playerList = context.Players
+                                    .Select(p => $"{p.PlayerFullName} : {p.PlayerGender}")
+                                    .ToList();
 
-            foreach (var playerData in player)
+            foreach (string playerData in playerList)
             {
-                string listItem = $"{playerData.PlayerFullName} : {playerData.PlayerGender}";
-                lstPlayers.Items.Add(listItem);
+                lstPlayers.Items.Add(playerData);
             }
         }
 
         /// <summary>
-        /// Removes the selected Player from the database.
+        /// Removes the selected Player from the database and "lstPlayers".
         /// </summary>
         /// <param name="playerToRemove"></param>
         private void RemovePlayer(string playerToRemove)
         {
-            lstPlayers.Items.RemoveAt(lstPlayers.SelectedIndex);
-
             using MurderMysteryContext context = new();
-            Player player = context.Players.FirstOrDefault(p => p.PlayerFullName == playerToRemove);
+            Player? selectedPlayer = context.Players.FirstOrDefault(p => p.PlayerFullName == playerToRemove);
 
-            if (player != null)
+            if (selectedPlayer != null)
             {
-                context.Players.Remove(player);
+                context.Players.Remove(selectedPlayer);
                 context.SaveChanges();
+                lstPlayers.Items.RemoveAt(lstPlayers.SelectedIndex);
             }
         }
 
@@ -47,22 +47,17 @@ namespace CPW211_MurderMystery
         /// Trims "lstPlayers" selected item so only the Player Name is left.
         /// </summary>
         /// <returns>Returns a trimmed version of the string.</returns>
-        private string PlayerToRemoveTrim()
+        private string TrimPlayerName()
         {
-            string playerToRemove = lstPlayers.SelectedItem.ToString();
-            string trimCharacter = " :";
-            int index = playerToRemove.IndexOf(trimCharacter);
-            if (index >= 0)
-            {
-                playerToRemove = playerToRemove.Substring(0, index);
-            }
+            string? playerToRemove = lstPlayers.SelectedItem?.ToString();
+            int index = playerToRemove.IndexOf(" :");
 
-            return playerToRemove;
+            return index >= 0 ? playerToRemove[..index] : playerToRemove;
         }
 
         private void btnAddPlayers_Click(object sender, EventArgs e)
         {
-            AddPlayerForm addPlayer = new AddPlayerForm();
+            using AddPlayerForm addPlayer = new();
             addPlayer.ShowDialog();
         }
 
@@ -70,8 +65,11 @@ namespace CPW211_MurderMystery
         {
             if (lstPlayers.SelectedIndex != -1)
             {
-                string playerToRemove = PlayerToRemoveTrim();
-                RemovePlayer(playerToRemove);
+                RemovePlayer(TrimPlayerName());
+            }
+            else
+            {
+                MessageBox.Show("Select a Player from the list to remove.");
             }
         }
     }
