@@ -10,10 +10,23 @@
         /// <summary>
         /// Check if the Player Name is valid.
         /// </summary>
+        /// <param name="playerName"></param>
         /// <returns>True if valid.</returns>
         private static bool ValidatePlayerName(string playerName)
         {
             return !string.IsNullOrWhiteSpace(playerName);
+        }
+
+        /// <summary>
+        /// Check if the Player Name already exists in the database.
+        /// </summary>
+        /// <param name="playerName"></param>
+        /// <returns>True if the Name exists.</returns>
+        private static bool PlayerNameExists(string playerName)
+        {
+            MurderMysteryContext context = new();
+
+            return context.Players.Any(p => p.PlayerFullName == playerName);
         }
 
         /// <summary>
@@ -86,6 +99,13 @@
 
                 return false;
             }
+            else if (PlayerNameExists(playerName))
+            {
+                MessageBox.Show("A Player with that name already exists.");
+
+                return false;
+            }
+
             if (!ValidatePlayerGender(playerGender))
             {
                 MessageBox.Show("Please select a gender.");
