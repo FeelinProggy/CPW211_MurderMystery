@@ -1,6 +1,4 @@
-﻿using RadioButton = System.Windows.Forms.RadioButton;
-
-namespace CPW211_MurderMystery
+﻿namespace CPW211_MurderMystery
 {
     public partial class AddPlayerForm : Form
     {
@@ -12,55 +10,62 @@ namespace CPW211_MurderMystery
         /// <summary>
         /// Check if the Player Name is valid.
         /// </summary>
+        /// <param name="playerName"></param>
         /// <returns>True if valid.</returns>
-        private bool ValidatePlayerName()
+        private static bool ValidatePlayerName(string playerName)
         {
-            if (string.IsNullOrWhiteSpace(txtPlayerName.Text))
-            {
-                MessageBox.Show("Please enter a name.");
+            return !string.IsNullOrWhiteSpace(playerName);
+        }
 
-                return false;
-            }
+        /// <summary>
+        /// Check if the Player Name already exists in the database.
+        /// </summary>
+        /// <param name="playerName"></param>
+        /// <returns>True if the Name exists.</returns>
+        private static bool PlayerNameExists(string playerName)
+        {
+            MurderMysteryContext context = new();
 
-            return true;
+            return context.Players.Any(p => p.PlayerFullName == playerName);
+        }
+
+        /// <summary>
+        /// Check if the Player Gender is valid.
+        /// </summary>
+        /// <param name="playerGender"></param>
+        /// <returns>True if valid.</returns>
+        private static bool ValidatePlayerGender(string playerGender)
+        {
+            return playerGender != "None";
         }
 
         /// <summary>
         /// Finds which radio button is Checked. If no radio button is Checked,
-        /// set to "No preference".
+        /// set to "None".
         /// </summary>
         /// <returns>Returns the selected Gender.</returns>
         private string SelectedPlayerGender()
         {
-            foreach (Control control in this.Controls)
-            {
-                if (control is RadioButton)
-                {
-                    RadioButton radioButton = control as RadioButton;
-                    if (radioButton.Checked)
-                    {
-                        return radioButton.Text;
-                    }
-                }
-            }
+            RadioButton? selectedRadioButton = Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
 
-            return "No preference";
+            return selectedRadioButton != null ? selectedRadioButton.Text : "None";
         }
 
         /// <summary>
         /// Adds Player to the database.
         /// </summary>
-        private void AddPlayer()
+        private static void AddPlayer(string playerName, string playerGender)
         {
             Player p = new()
             {
-                PlayerFullName = txtPlayerName.Text,
-                PlayerGender = SelectedPlayerGender()
+                PlayerFullName = playerName,
+                PlayerGender = playerGender
             };
 
             MurderMysteryContext context = new();
             context.Players.Add(p);
             context.SaveChanges();
+            UpdateListBox();
         }
 
         /// <summary>
@@ -68,11 +73,11 @@ namespace CPW211_MurderMystery
         /// </summary>
         private static void UpdateListBox()
         {
-            (Application.OpenForms["PartyCreatorForm"] as PartyCreatorForm).PopulateListBox();
+            (Application.OpenForms["PartyCreatorForm"] as PartyCreatorForm)?.PopulateListBox();
         }
 
         /// <summary>
-        /// Resets the form.
+        /// Resets the AddPlayerForm.
         /// </summary>
         private void ResetForm()
         {
@@ -83,14 +88,45 @@ namespace CPW211_MurderMystery
         }
 
         /// <summary>
+        /// Check if the user submission is valid.
+        /// </summary>
+        /// <returns>True if valid.</returns>
+        private static bool IsSubmissionValid(string playerName, string playerGender)
+        {
+            if (!ValidatePlayerName(playerName))
+            {
+                MessageBox.Show("Please enter a name.");
+
+                return false;
+            }
+            else if (PlayerNameExists(playerName))
+            {
+                MessageBox.Show("A Player with that name already exists.");
+
+                return false;
+            }
+
+            if (!ValidatePlayerGender(playerGender))
+            {
+                MessageBox.Show("Please select a gender.");
+
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
         /// Adds Player to the database and resets the form.
         /// </summary>
         private void btnSubmitMulti_Click(object sender, EventArgs e)
         {
-            if (ValidatePlayerName())
+            string playerName = txtPlayerName.Text;
+            string playerGender = SelectedPlayerGender();
+
+            if (IsSubmissionValid(playerName, playerGender))
             {
-                AddPlayer();
-                UpdateListBox();
+                AddPlayer(playerName, playerGender);
                 ResetForm();
             }
         }
@@ -100,20 +136,21 @@ namespace CPW211_MurderMystery
         /// </summary>
         private void btnSubmitSingle_Click(object sender, EventArgs e)
         {
-            if (ValidatePlayerName())
+            string playerName = txtPlayerName.Text;
+            string playerGender = SelectedPlayerGender();
+
+            if (IsSubmissionValid(playerName, playerGender))
             {
-                AddPlayer();
-                UpdateListBox();
+                AddPlayer(playerName, playerGender);
                 Close();
             }
         }
 
         /// <summary>
-        /// Closes the form and updates "lstPlayers" in PartyCreatorForm.
+        /// Closes the form.
         /// </summary>
         private void btnClose_Click(object sender, EventArgs e)
         {
-            UpdateListBox();
             Close();
         }
     }
