@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace CPW211_MurderMystery
 {
     public partial class PartyCreatorForm : Form
@@ -73,6 +75,19 @@ namespace CPW211_MurderMystery
                 string playerToRemove = PlayerToRemoveTrim();
                 RemovePlayer(playerToRemove);
             }
+        }
+
+
+        private MurderMysteryContext dbContext = new MurderMysteryContext(); // Initialize your context
+
+        private void PartyCreatorForm_Load(object sender, EventArgs e)
+        {
+            // Fetch data from the "Themes" table
+            var themes = dbContext.Themes; // Assuming you have a DbSet<Theme> in your context
+
+            // Populate ComboBox with theme titles
+            cboTheme.DataSource = themes.ToList();
+            cboTheme.DisplayMember = "Title"; // Display the 'Title' property
         }
     }
 }

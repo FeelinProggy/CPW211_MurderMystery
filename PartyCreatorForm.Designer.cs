@@ -1,4 +1,5 @@
-﻿namespace CPW211_MurderMystery
+﻿
+namespace CPW211_MurderMystery
 {
     partial class PartyCreatorForm
     {
@@ -199,6 +200,7 @@
             Controls.Add(cboTheme);
             Name = "PartyCreatorForm";
             Text = "Murder Mystery Party Creator";
+            Load += PartyCreatorForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
