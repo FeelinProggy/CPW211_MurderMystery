@@ -82,12 +82,15 @@ namespace CPW211_MurderMystery
 
         private void PartyCreatorForm_Load(object sender, EventArgs e)
         {
-            // Fetch data from the "Themes" table
-            var themes = dbContext.Themes; // Assuming you have a DbSet<Theme> in your context
+            // Fetch data from the Themes table
+            var themes = dbContext.Themes;
 
             // Populate ComboBox with theme titles
             cboTheme.DataSource = themes.ToList();
             cboTheme.DisplayMember = "Title"; // Display the 'Title' property
+
+            //Set cboTheme to be initially blank
+            cboTheme.SelectedIndex = -1;
         }
     }
 }
