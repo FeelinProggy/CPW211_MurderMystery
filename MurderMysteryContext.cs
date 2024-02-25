@@ -42,8 +42,9 @@ namespace CPW211_MurderMystery
             );
 
             modelBuilder.Entity<Theme>().HasData(
-                new Theme { ThemeId = 1, Title = "Mansion Party", Summary = "The town business tycoon is hosting a mascarade at her manor to celebrate her sons taking over of the family company." },
-                new Theme { ThemeId = 2, Title = "Train", Summary = "This train is on a two hour nonstop trip to the next city over. As this specific route goes through the countryside, phone connections are spotty at best." }
+                new Theme { ThemeId = 1, Title = "", Summary = "" },
+                new Theme { ThemeId = 2, Title = "Mansion Party", Summary = "The town business tycoon is hosting a mascarade at her manor to celebrate her sons taking over of the family company." },
+                new Theme { ThemeId = 3, Title = "Train", Summary = "This train is on a two hour nonstop trip to the next city over. As this specific route goes through the countryside, phone connections are spotty at best." }
             );
 
             modelBuilder.Entity<Character>().ToTable(b => b.HasCheckConstraint("CK_Gender", "[Gender] IN ('Male', 'Female', 'No preference')"));

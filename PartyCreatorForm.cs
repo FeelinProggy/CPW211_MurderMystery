@@ -88,9 +88,20 @@ namespace CPW211_MurderMystery
             // Populate ComboBox with theme titles
             cboTheme.DataSource = themes.ToList();
             cboTheme.DisplayMember = "Title"; // Display the 'Title' property
+        }
 
-            //Set cboTheme to be initially blank
-            cboTheme.SelectedIndex = -1;
+        private void cboTheme_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboTheme.SelectedItem != null)
+            {
+                txtThemeSummary.Visible = true;
+
+                // Retrieve the selected theme from the ComboBox
+                var selectedTheme = (Theme)cboTheme.SelectedItem;
+
+                // Update the TextBox with the corresponding summary
+                txtThemeSummary.Text = selectedTheme.Summary;
+            }
         }
     }
 }
