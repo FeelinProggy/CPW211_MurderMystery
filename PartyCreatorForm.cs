@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace CPW211_MurderMystery
 {
     public partial class PartyCreatorForm : Form
@@ -70,6 +72,33 @@ namespace CPW211_MurderMystery
             else
             {
                 MessageBox.Show("Select a Player from the list to remove.");
+            }
+        }
+
+
+        private MurderMysteryContext dbContext = new MurderMysteryContext(); // Initialize your context
+
+        private void PartyCreatorForm_Load(object sender, EventArgs e)
+        {
+            // Fetch data from the Themes table
+            var themes = dbContext.Themes;
+
+            // Populate ComboBox with theme titles
+            cboTheme.DataSource = themes.ToList();
+            cboTheme.DisplayMember = "Title"; // Display the 'Title' property
+        }
+
+        private void cboTheme_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboTheme.SelectedItem != null)
+            {
+                txtThemeSummary.Visible = true;
+
+                // Retrieve the selected theme from the ComboBox
+                var selectedTheme = (Theme)cboTheme.SelectedItem;
+
+                // Update the TextBox with the corresponding summary
+                txtThemeSummary.Text = selectedTheme.Summary;
             }
         }
     }
