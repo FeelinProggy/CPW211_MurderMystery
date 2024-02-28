@@ -48,6 +48,7 @@ namespace CPW211_MurderMystery
             // 
             // cboTheme
             // 
+            cboTheme.BackColor = SystemColors.Menu;
             cboTheme.FormattingEnabled = true;
             cboTheme.Location = new Point(118, 23);
             cboTheme.Name = "cboTheme";
@@ -174,6 +175,7 @@ namespace CPW211_MurderMystery
             // 
             // lstPlayers
             // 
+            lstPlayers.BackColor = SystemColors.Menu;
             lstPlayers.FormattingEnabled = true;
             lstPlayers.ItemHeight = 15;
             lstPlayers.Location = new Point(141, 157);
@@ -183,7 +185,7 @@ namespace CPW211_MurderMystery
             // 
             // txtThemeSummary
             // 
-            txtThemeSummary.BackColor = Color.WhiteSmoke;
+            txtThemeSummary.BackColor = Color.White;
             txtThemeSummary.BorderStyle = BorderStyle.None;
             txtThemeSummary.Location = new Point(70, 52);
             txtThemeSummary.Multiline = true;
@@ -196,6 +198,7 @@ namespace CPW211_MurderMystery
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(328, 495);
             Controls.Add(txtThemeSummary);
             Controls.Add(lstPlayers);
