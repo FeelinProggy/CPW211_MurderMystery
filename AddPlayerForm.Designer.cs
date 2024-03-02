@@ -45,6 +45,7 @@
             txtPlayerName.Name = "txtPlayerName";
             txtPlayerName.Size = new Size(100, 23);
             txtPlayerName.TabIndex = 1;
+            txtPlayerName.KeyPress += txtPlayerName_KeyPress;
             // 
             // rdoPlayerMale
             // 
