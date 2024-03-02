@@ -18,9 +18,7 @@ namespace CPW211_MurderMystery
             lstPlayers.Items.Clear();
 
             using MurderMysteryContext context = new();
-            var playerList = context.Players
-                                    .Select(p => $"{p.PlayerFullName} : {p.PlayerGender}")
-                                    .ToList();
+            List<string> playerList = [.. context.Players.Select(p => $"{p.PlayerFullName} : {p.PlayerGender}")];
 
             foreach (string playerData in playerList)
             {
@@ -48,13 +46,13 @@ namespace CPW211_MurderMystery
         /// <summary>
         /// Trims "lstPlayers" selected item so only the Player Name is left.
         /// </summary>
+        /// <param name="playerName"></param>
         /// <returns>Returns a trimmed version of the string.</returns>
-        private string TrimPlayerName()
+        private static string TrimPlayerName(string playerName)
         {
-            string? playerToRemove = lstPlayers.SelectedItem?.ToString();
-            int index = playerToRemove.IndexOf(" :");
+            int index = playerName.IndexOf(" :");
 
-            return index >= 0 ? playerToRemove[..index] : playerToRemove;
+            return index >= 0 ? playerName[..index] : playerName;
         }
 
         private void btnAddPlayers_Click(object sender, EventArgs e)
@@ -65,9 +63,9 @@ namespace CPW211_MurderMystery
 
         private void btnRemovePlayers_Click(object sender, EventArgs e)
         {
-            if (lstPlayers.SelectedIndex != -1)
+            if (lstPlayers.SelectedItem is string playerName)
             {
-                RemovePlayer(TrimPlayerName());
+                RemovePlayer(TrimPlayerName(playerName));
             }
             else
             {
@@ -75,13 +73,12 @@ namespace CPW211_MurderMystery
             }
         }
 
-
-        private MurderMysteryContext dbContext = new MurderMysteryContext(); // Initialize your context
-
         private void PartyCreatorForm_Load(object sender, EventArgs e)
         {
+            using MurderMysteryContext context = new(); // Initialize your context
+
             // Fetch data from the Themes table
-            var themes = dbContext.Themes;
+            DbSet<Theme> themes = context.Themes;
 
             // Populate ComboBox with theme titles
             cboTheme.DataSource = themes.ToList();
@@ -95,7 +92,7 @@ namespace CPW211_MurderMystery
                 txtThemeSummary.Visible = true;
 
                 // Retrieve the selected theme from the ComboBox
-                var selectedTheme = (Theme)cboTheme.SelectedItem;
+                Theme selectedTheme = (Theme)cboTheme.SelectedItem;
 
                 // Update the TextBox with the corresponding summary
                 txtThemeSummary.Text = selectedTheme.Summary;
