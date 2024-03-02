@@ -2,41 +2,41 @@
 using CPW211_MurderMystery;
 using System.Text;
 
-using MurderMysteryContext dbContext = new();
+using MurderMysteryContext context = new();
 
 Player p1 = new()
 {
-    PlayerFullName = "Joe Ortiz",
-    PlayerGender = "Mmale"
+    PlayerFullName = "Player 1",
+    PlayerGender = "Mmale" // Invalid Gender
 };
 
 Player p2 = new()
 {
-    PlayerFullName = "Jane Ortiz",
+    PlayerFullName = ":Person 2:", // Invalid Name
     PlayerGender = "Female"
 };
 
 Player p3 = new()
 {
-    PlayerFullName = "J Ortiz",
+    PlayerFullName = "User Three", // Name already exists
     PlayerGender = "No preference"
 };
 
 // Add to database
-dbContext.Players.Add(p1);
-dbContext.SaveChanges(); // Should throw an Error
+//context.Players.Add(p1);
+//context.SaveChanges(); // Should throw an Error: Invalid Gender
 
-dbContext.Players.Add(p2);
-dbContext.SaveChanges();
+//context.Players.Add(p2);
+//context.SaveChanges(); // Should throw an Error: Invalid Name
 
-dbContext.Players.Add(p3);
-dbContext.SaveChanges();
+//context.Players.Add(p3);
+//context.SaveChanges(); // Should throw an Error: Name already exists
 
-List<Player> allPlayers = dbContext.Players.ToList();
+List<Player> allPlayers = [.. context.Players];
 StringBuilder displayAllPlayers = new();
 foreach (Player player in allPlayers)
 {
-    if (player.PlayerGender == "no preference")
+    if (player.PlayerGender == "No preference")
     {
         displayAllPlayers.AppendLine($"{player.PlayerFullName} has {player.PlayerGender}");
     }

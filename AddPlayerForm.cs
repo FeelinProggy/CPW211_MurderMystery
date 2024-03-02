@@ -24,7 +24,7 @@
         /// <returns>True if the Name exists.</returns>
         private static bool PlayerNameExists(string playerName)
         {
-            MurderMysteryContext context = new();
+            using MurderMysteryContext context = new();
 
             return context.Players.Any(p => p.PlayerFullName == playerName);
         }
@@ -62,7 +62,7 @@
                 PlayerGender = playerGender
             };
 
-            MurderMysteryContext context = new();
+            using MurderMysteryContext context = new();
             context.Players.Add(p);
             context.SaveChanges();
             UpdateListBox();
@@ -152,6 +152,15 @@
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        /// <summary>
+        /// Allows only Letters or Digits to be entered.
+        /// </summary>
+        private void txtPlayerName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            List<char> allowedChars = [' ', '\b'];
+            e.Handled = !(char.IsLetterOrDigit(e.KeyChar) || allowedChars.Contains(e.KeyChar));
         }
     }
 }
