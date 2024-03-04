@@ -29,6 +29,7 @@ namespace CPW211_MurderMystery
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PartyCreatorForm));
             cboTheme = new ComboBox();
             btnAddPlayers = new Button();
             lblTheme = new Label();
@@ -46,6 +47,7 @@ namespace CPW211_MurderMystery
             txtThemeSummary = new TextBox();
             groupBoxHowToPlay = new GroupBox();
             groupBoxKillerAwareOfIdentity = new GroupBox();
+            textBox1 = new TextBox();
             groupBoxHowToPlay.SuspendLayout();
             groupBoxKillerAwareOfIdentity.SuspendLayout();
             SuspendLayout();
@@ -53,8 +55,9 @@ namespace CPW211_MurderMystery
             // cboTheme
             // 
             cboTheme.BackColor = SystemColors.Menu;
+            cboTheme.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTheme.FormattingEnabled = true;
-            cboTheme.Location = new Point(118, 23);
+            cboTheme.Location = new Point(125, 169);
             cboTheme.Name = "cboTheme";
             cboTheme.Size = new Size(145, 23);
             cboTheme.TabIndex = 1;
@@ -62,7 +65,7 @@ namespace CPW211_MurderMystery
             // 
             // btnAddPlayers
             // 
-            btnAddPlayers.Location = new Point(34, 157);
+            btnAddPlayers.Location = new Point(34, 283);
             btnAddPlayers.Name = "btnAddPlayers";
             btnAddPlayers.Size = new Size(100, 23);
             btnAddPlayers.TabIndex = 2;
@@ -73,7 +76,7 @@ namespace CPW211_MurderMystery
             // lblTheme
             // 
             lblTheme.AutoSize = true;
-            lblTheme.Location = new Point(16, 26);
+            lblTheme.Location = new Point(23, 172);
             lblTheme.Name = "lblTheme";
             lblTheme.Size = new Size(96, 15);
             lblTheme.TabIndex = 0;
@@ -81,7 +84,7 @@ namespace CPW211_MurderMystery
             // 
             // btnRemovePlayers
             // 
-            btnRemovePlayers.Location = new Point(34, 186);
+            btnRemovePlayers.Location = new Point(34, 312);
             btnRemovePlayers.Name = "btnRemovePlayers";
             btnRemovePlayers.Size = new Size(100, 23);
             btnRemovePlayers.TabIndex = 3;
@@ -122,7 +125,7 @@ namespace CPW211_MurderMystery
             // 
             lblPlay.AutoSize = true;
             lblPlay.Font = new Font("Segoe UI", 9.75F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblPlay.Location = new Point(6, 2);
+            lblPlay.Location = new Point(0, 2);
             lblPlay.Name = "lblPlay";
             lblPlay.Size = new Size(160, 17);
             lblPlay.TabIndex = 0;
@@ -140,7 +143,7 @@ namespace CPW211_MurderMystery
             // rdoKnowsMurdererYes
             // 
             rdoKnowsMurdererYes.AutoSize = true;
-            rdoKnowsMurdererYes.Location = new Point(48, 27);
+            rdoKnowsMurdererYes.Location = new Point(49, 27);
             rdoKnowsMurdererYes.Name = "rdoKnowsMurdererYes";
             rdoKnowsMurdererYes.Size = new Size(42, 19);
             rdoKnowsMurdererYes.TabIndex = 5;
@@ -161,7 +164,7 @@ namespace CPW211_MurderMystery
             // 
             // btnPrintInstructions
             // 
-            btnPrintInstructions.Location = new Point(34, 449);
+            btnPrintInstructions.Location = new Point(181, 415);
             btnPrintInstructions.Name = "btnPrintInstructions";
             btnPrintInstructions.Size = new Size(119, 23);
             btnPrintInstructions.TabIndex = 6;
@@ -170,7 +173,7 @@ namespace CPW211_MurderMystery
             // 
             // btnSaveGameInfo
             // 
-            btnSaveGameInfo.Location = new Point(173, 449);
+            btnSaveGameInfo.Location = new Point(320, 415);
             btnSaveGameInfo.Name = "btnSaveGameInfo";
             btnSaveGameInfo.Size = new Size(112, 23);
             btnSaveGameInfo.TabIndex = 7;
@@ -182,7 +185,7 @@ namespace CPW211_MurderMystery
             lstPlayers.BackColor = SystemColors.Menu;
             lstPlayers.FormattingEnabled = true;
             lstPlayers.ItemHeight = 15;
-            lstPlayers.Location = new Point(141, 157);
+            lstPlayers.Location = new Point(141, 283);
             lstPlayers.Name = "lstPlayers";
             lstPlayers.Size = new Size(144, 94);
             lstPlayers.TabIndex = 8;
@@ -191,10 +194,11 @@ namespace CPW211_MurderMystery
             // 
             txtThemeSummary.BackColor = Color.White;
             txtThemeSummary.BorderStyle = BorderStyle.None;
-            txtThemeSummary.Location = new Point(70, 52);
+            txtThemeSummary.Location = new Point(70, 198);
             txtThemeSummary.Multiline = true;
             txtThemeSummary.Name = "txtThemeSummary";
-            txtThemeSummary.Size = new Size(215, 99);
+            txtThemeSummary.ReadOnly = true;
+            txtThemeSummary.Size = new Size(215, 79);
             txtThemeSummary.TabIndex = 9;
             txtThemeSummary.Visible = false;
             // 
@@ -204,7 +208,7 @@ namespace CPW211_MurderMystery
             groupBoxHowToPlay.Controls.Add(rdoPlayImprovise);
             groupBoxHowToPlay.Controls.Add(lblPlayImprovise);
             groupBoxHowToPlay.Controls.Add(lblPlay);
-            groupBoxHowToPlay.Location = new Point(49, 274);
+            groupBoxHowToPlay.Location = new Point(332, 179);
             groupBoxHowToPlay.Name = "groupBoxHowToPlay";
             groupBoxHowToPlay.Size = new Size(205, 100);
             groupBoxHowToPlay.TabIndex = 10;
@@ -215,18 +219,29 @@ namespace CPW211_MurderMystery
             groupBoxKillerAwareOfIdentity.Controls.Add(lblKnowsMurderer);
             groupBoxKillerAwareOfIdentity.Controls.Add(rdoKnowsMurdererNo);
             groupBoxKillerAwareOfIdentity.Controls.Add(rdoKnowsMurdererYes);
-            groupBoxKillerAwareOfIdentity.Location = new Point(49, 361);
+            groupBoxKillerAwareOfIdentity.Location = new Point(332, 285);
             groupBoxKillerAwareOfIdentity.Name = "groupBoxKillerAwareOfIdentity";
             groupBoxKillerAwareOfIdentity.Size = new Size(205, 63);
             groupBoxKillerAwareOfIdentity.TabIndex = 11;
             groupBoxKillerAwareOfIdentity.TabStop = false;
+            // 
+            // textBox1
+            // 
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.Location = new Point(12, 12);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(577, 147);
+            textBox1.TabIndex = 12;
+            textBox1.Text = resources.GetString("textBox1.Text");
             // 
             // PartyCreatorForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(314, 495);
+            ClientSize = new Size(600, 454);
+            Controls.Add(textBox1);
             Controls.Add(groupBoxKillerAwareOfIdentity);
             Controls.Add(groupBoxHowToPlay);
             Controls.Add(txtThemeSummary);
@@ -267,5 +282,6 @@ namespace CPW211_MurderMystery
         private TextBox txtThemeSummary;
         private GroupBox groupBoxHowToPlay;
         private GroupBox groupBoxKillerAwareOfIdentity;
+        private TextBox textBox1;
     }
 }
