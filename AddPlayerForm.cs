@@ -46,7 +46,7 @@
         /// <returns>Returns the selected Gender.</returns>
         private string SelectedPlayerGender()
         {
-            RadioButton? selectedRadioButton = Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+            RadioButton? selectedRadioButton = groupBoxGenderPref.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
 
             return selectedRadioButton != null ? selectedRadioButton.Text : "None";
         }
