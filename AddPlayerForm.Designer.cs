@@ -37,6 +37,8 @@
             btnSubmitSingle = new Button();
             btnSubmitMulti = new Button();
             btnClose = new Button();
+            groupBoxGenderPref = new GroupBox();
+            groupBoxGenderPref.SuspendLayout();
             SuspendLayout();
             // 
             // txtPlayerName
@@ -50,7 +52,7 @@
             // rdoPlayerMale
             // 
             rdoPlayerMale.AutoSize = true;
-            rdoPlayerMale.Location = new Point(86, 66);
+            rdoPlayerMale.Location = new Point(6, 22);
             rdoPlayerMale.Name = "rdoPlayerMale";
             rdoPlayerMale.Size = new Size(51, 19);
             rdoPlayerMale.TabIndex = 2;
@@ -61,7 +63,7 @@
             // rdoPlayerFemale
             // 
             rdoPlayerFemale.AutoSize = true;
-            rdoPlayerFemale.Location = new Point(86, 91);
+            rdoPlayerFemale.Location = new Point(6, 47);
             rdoPlayerFemale.Name = "rdoPlayerFemale";
             rdoPlayerFemale.Size = new Size(63, 19);
             rdoPlayerFemale.TabIndex = 2;
@@ -72,7 +74,7 @@
             // rdoPlayerNone
             // 
             rdoPlayerNone.AutoSize = true;
-            rdoPlayerNone.Location = new Point(86, 116);
+            rdoPlayerNone.Location = new Point(6, 72);
             rdoPlayerNone.Name = "rdoPlayerNone";
             rdoPlayerNone.Size = new Size(100, 19);
             rdoPlayerNone.TabIndex = 2;
@@ -92,7 +94,7 @@
             // lblCharacterPreference
             // 
             lblCharacterPreference.AutoSize = true;
-            lblCharacterPreference.Location = new Point(69, 48);
+            lblCharacterPreference.Location = new Point(0, 0);
             lblCharacterPreference.Name = "lblCharacterPreference";
             lblCharacterPreference.Size = new Size(117, 15);
             lblCharacterPreference.TabIndex = 0;
@@ -128,22 +130,33 @@
             btnClose.UseVisualStyleBackColor = true;
             btnClose.Click += btnClose_Click;
             // 
+            // groupBoxGenderPref
+            // 
+            groupBoxGenderPref.Controls.Add(lblCharacterPreference);
+            groupBoxGenderPref.Controls.Add(rdoPlayerMale);
+            groupBoxGenderPref.Controls.Add(rdoPlayerFemale);
+            groupBoxGenderPref.Controls.Add(rdoPlayerNone);
+            groupBoxGenderPref.Location = new Point(69, 41);
+            groupBoxGenderPref.Name = "groupBoxGenderPref";
+            groupBoxGenderPref.Size = new Size(117, 100);
+            groupBoxGenderPref.TabIndex = 6;
+            groupBoxGenderPref.TabStop = false;
+            // 
             // AddPlayerForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(367, 167);
+            Controls.Add(groupBoxGenderPref);
             Controls.Add(btnClose);
             Controls.Add(btnSubmitMulti);
             Controls.Add(btnSubmitSingle);
-            Controls.Add(lblCharacterPreference);
             Controls.Add(lblPlayerName);
-            Controls.Add(rdoPlayerNone);
-            Controls.Add(rdoPlayerFemale);
-            Controls.Add(rdoPlayerMale);
             Controls.Add(txtPlayerName);
             Name = "AddPlayerForm";
             Text = "AddPlayerForm";
+            groupBoxGenderPref.ResumeLayout(false);
+            groupBoxGenderPref.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -159,5 +172,6 @@
         private Button btnSubmitSingle;
         private Button btnSubmitMulti;
         private Button btnClose;
+        private GroupBox groupBoxGenderPref;
     }
 }
