@@ -89,7 +89,6 @@ namespace CPW211_MurderMystery
         {
             if (cboTheme.SelectedItem != null)
             {
-                txtThemeSummary.Visible = true;
 
                 // Retrieve the selected theme from the ComboBox
                 Theme selectedTheme = (Theme)cboTheme.SelectedItem;

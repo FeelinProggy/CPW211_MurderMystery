@@ -117,7 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="txtThemeSummary.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>Welcome to the Murder Mystery Party Creator!
+Hosting a Murder Mystery night but don’t know where to start? This is for you!
+Choose a Theme for your party in the dropdown menu below, then add the names of everyone attending (click the Add Players button to go to the Add Player form).
+You can also choose whether you’d like a pre-scripted story, or if you’d like to improvise. You can even decide if the murderer will know they’re role or not (for drama!)
+When everything is to your liking, you can print your custom game by clicking “Print Instructions” at the bottom of the page, or click “Save Game Info” to save your progress and come back later!
+Happy crime solving!</value>
+  </data>
 </root>
