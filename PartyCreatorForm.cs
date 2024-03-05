@@ -97,5 +97,12 @@ namespace CPW211_MurderMystery
                 txtThemeSummary.Text = selectedTheme.Summary;
             }
         }
+
+        private void btnPrintInstructions_Click(object sender, EventArgs e)
+        {
+            DisplayPrintInstructionsForm displayGame = new();
+            displayGame.SetThemeLabel(cboTheme.Text, txtThemeSummary.Text);
+            displayGame.ShowDialog();
+        }
     }
 }
