@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="textBox1.Text" xml:space="preserve">
+  <data name="txtBoxInstructions.Text" xml:space="preserve">
     <value>Welcome to the Murder Mystery Party Creator!
 Hosting a Murder Mystery night but don’t know where to start? This is for you!
 Choose a Theme for your party in the dropdown menu below, then add the names of everyone attending (click the Add Players button to go to the Add Player form).

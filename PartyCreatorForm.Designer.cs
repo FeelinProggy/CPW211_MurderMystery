@@ -47,7 +47,7 @@ namespace CPW211_MurderMystery
             txtThemeSummary = new TextBox();
             groupBoxHowToPlay = new GroupBox();
             groupBoxKillerAwareOfIdentity = new GroupBox();
-            textBox1 = new TextBox();
+            txtBoxInstructions = new TextBox();
             groupBoxHowToPlay.SuspendLayout();
             groupBoxKillerAwareOfIdentity.SuspendLayout();
             SuspendLayout();
@@ -200,7 +200,6 @@ namespace CPW211_MurderMystery
             txtThemeSummary.ReadOnly = true;
             txtThemeSummary.Size = new Size(215, 79);
             txtThemeSummary.TabIndex = 9;
-            txtThemeSummary.Visible = false;
             // 
             // groupBoxHowToPlay
             // 
@@ -225,15 +224,16 @@ namespace CPW211_MurderMystery
             groupBoxKillerAwareOfIdentity.TabIndex = 11;
             groupBoxKillerAwareOfIdentity.TabStop = false;
             // 
-            // textBox1
+            // txtBoxInstructions
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(12, 12);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(577, 147);
-            textBox1.TabIndex = 12;
-            textBox1.Text = resources.GetString("textBox1.Text");
+            txtBoxInstructions.BorderStyle = BorderStyle.FixedSingle;
+            txtBoxInstructions.Location = new Point(12, 12);
+            txtBoxInstructions.Multiline = true;
+            txtBoxInstructions.Name = "txtBoxInstructions";
+            txtBoxInstructions.ReadOnly = true;
+            txtBoxInstructions.Size = new Size(577, 147);
+            txtBoxInstructions.TabIndex = 12;
+            txtBoxInstructions.Text = resources.GetString("txtBoxInstructions.Text");
             // 
             // PartyCreatorForm
             // 
@@ -241,7 +241,7 @@ namespace CPW211_MurderMystery
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(600, 454);
-            Controls.Add(textBox1);
+            Controls.Add(txtBoxInstructions);
             Controls.Add(groupBoxKillerAwareOfIdentity);
             Controls.Add(groupBoxHowToPlay);
             Controls.Add(txtThemeSummary);
@@ -282,6 +282,6 @@ namespace CPW211_MurderMystery
         private TextBox txtThemeSummary;
         private GroupBox groupBoxHowToPlay;
         private GroupBox groupBoxKillerAwareOfIdentity;
-        private TextBox textBox1;
+        private TextBox txtBoxInstructions;
     }
 }
