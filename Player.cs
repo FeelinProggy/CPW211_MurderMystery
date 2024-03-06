@@ -23,6 +23,10 @@ namespace CPW211_MurderMystery
         /// The Player gender.
         /// </summary>
         [StringLength(13)]
-        public string PlayerGender { get; set; }
+        public string GenderPreference { get; set; }
+
+        public int? AssignedCharacterId { get; set; }
+        public Character AssignedCharacter { get; set; }
+
     }
 }
