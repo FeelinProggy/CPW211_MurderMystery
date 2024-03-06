@@ -1,41 +1,36 @@
-﻿using CPW211_MurderMystery;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace CPW211_MurderMystery
+﻿namespace CPW211_MurderMystery
 {
     public partial class DisplayPrintInstructionsForm : Form
     {
-        public DisplayPrintInstructionsForm()
+        private Theme _theme;
+
+        public DisplayPrintInstructionsForm(Theme theme)
         {
             InitializeComponent();
+            _theme = theme;
+            this.FormClosed += DisplayPrintInstructionsForm_FormClosed;
         }
 
-        public void SetThemeLabel(string theme, string description)
+        private void DisplayPrintInstructionsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            rtbThemeSelection.Text = theme + ": " + description;
+            using MurderMysteryContext context = new();
+            context.ResetAssignedCharacterId();
         }
 
         private void DisplayPrintInstructionsForm_Load(object sender, EventArgs e)
         {
+            rtbThemeSelection.Text = $"{_theme.Title}: {_theme.Summary}";
 
+            using (var context = new MurderMysteryContext())
+            {
+                CastAssignment.AssignCharacters(context, _theme.ThemeId);
+            }
         }
-        /*
-        public void SetListBoxItems(List<string> items)
+
+        private void btnCloseResults_Click(object sender, EventArgs e)
         {
-           listBox1.Items.Clear();
-           foreach (var item in items)
-           {
-               listBox1.Items.Add(item);
-           }
-        }*/
+            this.Close();
+        }
     }
 }
 
