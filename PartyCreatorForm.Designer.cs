@@ -170,6 +170,7 @@ namespace CPW211_MurderMystery
             btnPrintInstructions.TabIndex = 6;
             btnPrintInstructions.Text = "Print Instructions";
             btnPrintInstructions.UseVisualStyleBackColor = true;
+            btnPrintInstructions.Click += btnPrintInstructions_Click;
             // 
             // btnSaveGameInfo
             // 
