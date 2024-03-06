@@ -18,7 +18,7 @@ namespace CPW211_MurderMystery
             lstPlayers.Items.Clear();
 
             using MurderMysteryContext context = new();
-            List<string> playerList = [.. context.Players.Select(p => $"{p.PlayerFullName} : {p.PlayerGender}")];
+            List<string> playerList = [.. context.Players.Select(p => $"{p.PlayerFullName} : {p.GenderPreference}")];
 
             foreach (string playerData in playerList)
             {
@@ -89,7 +89,6 @@ namespace CPW211_MurderMystery
         {
             if (cboTheme.SelectedItem != null)
             {
-
                 // Retrieve the selected theme from the ComboBox
                 Theme selectedTheme = (Theme)cboTheme.SelectedItem;
 
@@ -100,9 +99,15 @@ namespace CPW211_MurderMystery
 
         private void btnPrintInstructions_Click(object sender, EventArgs e)
         {
-            DisplayPrintInstructionsForm displayGame = new();
-            displayGame.SetThemeLabel(cboTheme.Text, txtThemeSummary.Text);
-            displayGame.ShowDialog();
+            if (cboTheme.SelectedItem is Theme selectedTheme && selectedTheme.ThemeId != 1)
+            {
+                DisplayPrintInstructionsForm displayGame = new(selectedTheme);
+                displayGame.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please select a theme.");
+            }
         }
     }
 }
