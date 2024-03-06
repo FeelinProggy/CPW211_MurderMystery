@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             rtbThemeSelection = new RichTextBox();
-            listBox1 = new ListBox();
+            lstAssignedCast = new ListBox();
             label1 = new Label();
             label2 = new Label();
+            btnPrintResults = new Button();
+            btnCloseResults = new Button();
             SuspendLayout();
             // 
             // rtbThemeSelection
@@ -42,14 +44,14 @@
             rtbThemeSelection.TabIndex = 0;
             rtbThemeSelection.Text = "";
             // 
-            // listBox1
+            // lstAssignedCast
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(142, 161);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(346, 94);
-            listBox1.TabIndex = 1;
+            lstAssignedCast.FormattingEnabled = true;
+            lstAssignedCast.ItemHeight = 15;
+            lstAssignedCast.Location = new Point(142, 161);
+            lstAssignedCast.Name = "lstAssignedCast";
+            lstAssignedCast.Size = new Size(346, 94);
+            lstAssignedCast.TabIndex = 1;
             // 
             // label1
             // 
@@ -69,14 +71,35 @@
             label2.TabIndex = 3;
             label2.Text = "Assigned Cast";
             // 
+            // btnPrintResults
+            // 
+            btnPrintResults.Location = new Point(610, 41);
+            btnPrintResults.Name = "btnPrintResults";
+            btnPrintResults.Size = new Size(75, 23);
+            btnPrintResults.TabIndex = 4;
+            btnPrintResults.Text = "Print";
+            btnPrintResults.UseVisualStyleBackColor = true;
+            // 
+            // btnCloseResults
+            // 
+            btnCloseResults.Location = new Point(619, 119);
+            btnCloseResults.Name = "btnCloseResults";
+            btnCloseResults.Size = new Size(75, 23);
+            btnCloseResults.TabIndex = 5;
+            btnCloseResults.Text = "Close";
+            btnCloseResults.UseVisualStyleBackColor = true;
+            btnCloseResults.Click += btnCloseResults_Click;
+            // 
             // DisplayPrintInstructionsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnCloseResults);
+            Controls.Add(btnPrintResults);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(listBox1);
+            Controls.Add(lstAssignedCast);
             Controls.Add(rtbThemeSelection);
             Name = "DisplayPrintInstructionsForm";
             Text = "DisplayPrintInstructionsForm";
@@ -88,8 +111,10 @@
         #endregion
 
         private RichTextBox rtbThemeSelection;
-        private ListBox listBox1;
+        private ListBox lstAssignedCast;
         private Label label1;
         private Label label2;
+        private Button btnPrintResults;
+        private Button btnCloseResults;
     }
 }
