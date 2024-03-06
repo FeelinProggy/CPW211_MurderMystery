@@ -17,6 +17,20 @@
         {
             rtbThemeSelection.Text = $"{_theme.Title}: {_theme.Summary}";
             CastAssignment.AssignCharacters(_context, _theme.ThemeId);
+            PopulateCastListBox();
+        }
+
+        private void PopulateCastListBox()
+        {
+            lstAssignedCast.Items.Clear();
+            List<string> castList = _context.Players
+                .Where(p => p.AssignedCharacterId != null)
+                .Select(p => $"{p.PlayerFullName} : {p.AssignedCharacter.FullName}")
+                .ToList();
+            foreach ( var role in castList ) 
+            {
+                lstAssignedCast.Items.Add(role);
+            }
         }
 
         private void btnCloseResults_Click(object sender, EventArgs e)
