@@ -30,13 +30,13 @@
         }
 
         /// <summary>
-        /// Check if the Player Gender is valid.
+        /// Check if the Player's Gender Preference is valid.
         /// </summary>
-        /// <param name="playerGender"></param>
+        /// <param name="GenderPreference"></param>
         /// <returns>True if valid.</returns>
-        private static bool ValidatePlayerGender(string playerGender)
+        private static bool ValidateGenderPreference(string GenderPreference)
         {
-            return playerGender != "None";
+            return GenderPreference != "None";
         }
 
         /// <summary>
@@ -44,7 +44,7 @@
         /// set to "None".
         /// </summary>
         /// <returns>Returns the selected Gender.</returns>
-        private string SelectedPlayerGender()
+        private string SelectedGenderPreference()
         {
             RadioButton? selectedRadioButton = groupBoxGenderPref.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
 
@@ -59,7 +59,7 @@
             Player p = new()
             {
                 PlayerFullName = playerName,
-                PlayerGender = playerGender
+                GenderPreference = playerGender
             };
 
             using MurderMysteryContext context = new();
@@ -106,7 +106,7 @@
                 return false;
             }
 
-            if (!ValidatePlayerGender(playerGender))
+            if (!ValidateGenderPreference(playerGender))
             {
                 MessageBox.Show("Please select a gender.");
 
@@ -122,11 +122,11 @@
         private void btnSubmitMulti_Click(object sender, EventArgs e)
         {
             string playerName = txtPlayerName.Text;
-            string playerGender = SelectedPlayerGender();
+            string playerGenderPreference = SelectedGenderPreference();
 
-            if (IsSubmissionValid(playerName, playerGender))
+            if (IsSubmissionValid(playerName, playerGenderPreference))
             {
-                AddPlayer(playerName, playerGender);
+                AddPlayer(playerName, playerGenderPreference);
                 ResetForm();
             }
         }
@@ -137,7 +137,7 @@
         private void btnSubmitSingle_Click(object sender, EventArgs e)
         {
             string playerName = txtPlayerName.Text;
-            string playerGender = SelectedPlayerGender();
+            string playerGender = SelectedGenderPreference();
 
             if (IsSubmissionValid(playerName, playerGender))
             {
