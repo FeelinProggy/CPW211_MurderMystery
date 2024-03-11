@@ -109,5 +109,10 @@ namespace CPW211_MurderMystery
                 MessageBox.Show("Please select a theme.");
             }
         }
+
+        private void FeatureInDevelopmentA_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This feature is still being developed.");
+        }
     }
 }

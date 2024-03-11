@@ -15,21 +15,21 @@
 
         private void DisplayPrintInstructionsForm_Load(object sender, EventArgs e)
         {
-            rtbThemeSelection.Text = $"{_theme.Title}: {_theme.Summary}";
+            rtbPrintThemeInfo.Text = $"{_theme.Title}: {_theme.Summary}";
             CastAssignment.AssignCharacters(_context, _theme.ThemeId);
             PopulateCastListBox();
         }
 
         private void PopulateCastListBox()
         {
-            lstAssignedCast.Items.Clear();
+            lstPrintAssignedCast.Items.Clear();
             List<string> castList = _context.Players
                 .Where(p => p.AssignedCharacterId != null)
                 .Select(p => $"{p.PlayerFullName} : {p.AssignedCharacter.FullName}")
                 .ToList();
-            foreach ( var role in castList ) 
+            foreach (var role in castList)
             {
-                lstAssignedCast.Items.Add(role);
+                lstPrintAssignedCast.Items.Add(role);
             }
         }
 
@@ -42,6 +42,11 @@
         {
             _context.ResetAssignedCharacterId();
             _context.Dispose();
+        }
+
+        private void FeatureInDevelopmentB_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This feature is still being developed.");
         }
     }
 }

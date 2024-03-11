@@ -180,6 +180,7 @@ namespace CPW211_MurderMystery
             btnSaveGameInfo.TabIndex = 7;
             btnSaveGameInfo.Text = "Save Game Info";
             btnSaveGameInfo.UseVisualStyleBackColor = true;
+            btnSaveGameInfo.Click += FeatureInDevelopmentA_Click;
             // 
             // lstPlayers
             // 
