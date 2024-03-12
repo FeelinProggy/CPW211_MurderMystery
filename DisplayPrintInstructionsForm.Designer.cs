@@ -38,9 +38,10 @@
             // 
             // rtbPrintThemeInfo
             // 
-            rtbPrintThemeInfo.Location = new Point(94, 12);
+            rtbPrintThemeInfo.Location = new Point(12, 27);
             rtbPrintThemeInfo.Name = "rtbPrintThemeInfo";
-            rtbPrintThemeInfo.Size = new Size(275, 96);
+            rtbPrintThemeInfo.ReadOnly = true;
+            rtbPrintThemeInfo.Size = new Size(314, 96);
             rtbPrintThemeInfo.TabIndex = 0;
             rtbPrintThemeInfo.Text = "";
             // 
@@ -48,32 +49,32 @@
             // 
             lstPrintAssignedCast.FormattingEnabled = true;
             lstPrintAssignedCast.ItemHeight = 15;
-            lstPrintAssignedCast.Location = new Point(94, 136);
+            lstPrintAssignedCast.Location = new Point(12, 144);
             lstPrintAssignedCast.Name = "lstPrintAssignedCast";
-            lstPrintAssignedCast.Size = new Size(275, 94);
+            lstPrintAssignedCast.Size = new Size(314, 79);
             lstPrintAssignedCast.TabIndex = 1;
             // 
             // lblPrintThemeInfo
             // 
             lblPrintThemeInfo.AutoSize = true;
-            lblPrintThemeInfo.Location = new Point(18, 12);
+            lblPrintThemeInfo.Location = new Point(12, 9);
             lblPrintThemeInfo.Name = "lblPrintThemeInfo";
-            lblPrintThemeInfo.Size = new Size(73, 15);
+            lblPrintThemeInfo.Size = new Size(76, 15);
             lblPrintThemeInfo.TabIndex = 2;
-            lblPrintThemeInfo.Text = "Party Theme";
+            lblPrintThemeInfo.Text = "Party Theme:";
             // 
             // lblPrintCast
             // 
             lblPrintCast.AutoSize = true;
-            lblPrintCast.Location = new Point(7, 157);
+            lblPrintCast.Location = new Point(12, 126);
             lblPrintCast.Name = "lblPrintCast";
-            lblPrintCast.Size = new Size(81, 15);
+            lblPrintCast.Size = new Size(84, 15);
             lblPrintCast.TabIndex = 3;
-            lblPrintCast.Text = "Assigned Cast";
+            lblPrintCast.Text = "Assigned Cast:";
             // 
             // btnPrintResults
             // 
-            btnPrintResults.Location = new Point(409, 38);
+            btnPrintResults.Location = new Point(12, 229);
             btnPrintResults.Name = "btnPrintResults";
             btnPrintResults.Size = new Size(75, 23);
             btnPrintResults.TabIndex = 4;
@@ -83,7 +84,7 @@
             // 
             // btnCloseResults
             // 
-            btnCloseResults.Location = new Point(409, 157);
+            btnCloseResults.Location = new Point(251, 229);
             btnCloseResults.Name = "btnCloseResults";
             btnCloseResults.Size = new Size(75, 23);
             btnCloseResults.TabIndex = 5;
@@ -95,7 +96,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(501, 275);
+            ClientSize = new Size(338, 264);
             Controls.Add(btnCloseResults);
             Controls.Add(btnPrintResults);
             Controls.Add(lblPrintCast);
@@ -103,7 +104,7 @@
             Controls.Add(lstPrintAssignedCast);
             Controls.Add(rtbPrintThemeInfo);
             Name = "DisplayPrintInstructionsForm";
-            Text = "DisplayPrintInstructionsForm";
+            Text = "Print Instructions";
             Load += DisplayPrintInstructionsForm_Load;
             ResumeLayout(false);
             PerformLayout();

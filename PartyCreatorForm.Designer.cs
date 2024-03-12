@@ -36,9 +36,6 @@ namespace CPW211_MurderMystery
             btnRemovePlayers = new Button();
             rdoPlayScripted = new RadioButton();
             rdoPlayImprovise = new RadioButton();
-            lblPlayImprovise = new Label();
-            lblPlay = new Label();
-            lblKnowsMurderer = new Label();
             rdoKnowsMurdererYes = new RadioButton();
             rdoKnowsMurdererNo = new RadioButton();
             btnPrintInstructions = new Button();
@@ -48,26 +45,27 @@ namespace CPW211_MurderMystery
             groupBoxHowToPlay = new GroupBox();
             groupBoxKillerAwareOfIdentity = new GroupBox();
             txtBoxInstructions = new TextBox();
+            btnRemoveAllPlayers = new Button();
+            btnExit = new Button();
             groupBoxHowToPlay.SuspendLayout();
             groupBoxKillerAwareOfIdentity.SuspendLayout();
             SuspendLayout();
             // 
             // cboTheme
             // 
-            cboTheme.BackColor = SystemColors.Menu;
             cboTheme.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTheme.FormattingEnabled = true;
-            cboTheme.Location = new Point(125, 169);
+            cboTheme.Location = new Point(114, 174);
             cboTheme.Name = "cboTheme";
-            cboTheme.Size = new Size(145, 23);
+            cboTheme.Size = new Size(253, 23);
             cboTheme.TabIndex = 1;
             cboTheme.SelectedIndexChanged += cboTheme_SelectedIndexChanged;
             // 
             // btnAddPlayers
             // 
-            btnAddPlayers.Location = new Point(34, 283);
+            btnAddPlayers.Location = new Point(12, 280);
             btnAddPlayers.Name = "btnAddPlayers";
-            btnAddPlayers.Size = new Size(100, 23);
+            btnAddPlayers.Size = new Size(115, 23);
             btnAddPlayers.TabIndex = 2;
             btnAddPlayers.Text = "Add Players";
             btnAddPlayers.UseVisualStyleBackColor = true;
@@ -76,7 +74,7 @@ namespace CPW211_MurderMystery
             // lblTheme
             // 
             lblTheme.AutoSize = true;
-            lblTheme.Location = new Point(23, 172);
+            lblTheme.Location = new Point(12, 177);
             lblTheme.Name = "lblTheme";
             lblTheme.Size = new Size(96, 15);
             lblTheme.TabIndex = 0;
@@ -84,9 +82,9 @@ namespace CPW211_MurderMystery
             // 
             // btnRemovePlayers
             // 
-            btnRemovePlayers.Location = new Point(34, 312);
+            btnRemovePlayers.Location = new Point(12, 309);
             btnRemovePlayers.Name = "btnRemovePlayers";
-            btnRemovePlayers.Size = new Size(100, 23);
+            btnRemovePlayers.Size = new Size(115, 23);
             btnRemovePlayers.TabIndex = 3;
             btnRemovePlayers.Text = "Remove Players";
             btnRemovePlayers.UseVisualStyleBackColor = true;
@@ -95,6 +93,7 @@ namespace CPW211_MurderMystery
             // rdoPlayScripted
             // 
             rdoPlayScripted.AutoSize = true;
+            rdoPlayScripted.Font = new Font("Segoe UI", 9F);
             rdoPlayScripted.Location = new Point(6, 22);
             rdoPlayScripted.Name = "rdoPlayScripted";
             rdoPlayScripted.Size = new Size(180, 19);
@@ -105,6 +104,7 @@ namespace CPW211_MurderMystery
             // rdoPlayImprovise
             // 
             rdoPlayImprovise.AutoSize = true;
+            rdoPlayImprovise.Font = new Font("Segoe UI", 9F);
             rdoPlayImprovise.Location = new Point(6, 47);
             rdoPlayImprovise.Name = "rdoPlayImprovise";
             rdoPlayImprovise.Size = new Size(112, 19);
@@ -112,38 +112,11 @@ namespace CPW211_MurderMystery
             rdoPlayImprovise.Text = "Or to improvise?";
             rdoPlayImprovise.UseVisualStyleBackColor = true;
             // 
-            // lblPlayImprovise
-            // 
-            lblPlayImprovise.AutoSize = true;
-            lblPlayImprovise.Location = new Point(6, 69);
-            lblPlayImprovise.Name = "lblPlayImprovise";
-            lblPlayImprovise.Size = new Size(137, 15);
-            lblPlayImprovise.TabIndex = 0;
-            lblPlayImprovise.Text = "(Character profiles only.)";
-            // 
-            // lblPlay
-            // 
-            lblPlay.AutoSize = true;
-            lblPlay.Font = new Font("Segoe UI", 9.75F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblPlay.Location = new Point(0, 2);
-            lblPlay.Name = "lblPlay";
-            lblPlay.Size = new Size(160, 17);
-            lblPlay.TabIndex = 0;
-            lblPlay.Text = "How do you want to play?";
-            // 
-            // lblKnowsMurderer
-            // 
-            lblKnowsMurderer.AutoSize = true;
-            lblKnowsMurderer.Location = new Point(0, 9);
-            lblKnowsMurderer.Name = "lblKnowsMurderer";
-            lblKnowsMurderer.Size = new Size(202, 15);
-            lblKnowsMurderer.TabIndex = 1;
-            lblKnowsMurderer.Text = "Should the murderer know they're it?";
-            // 
             // rdoKnowsMurdererYes
             // 
             rdoKnowsMurdererYes.AutoSize = true;
-            rdoKnowsMurdererYes.Location = new Point(49, 27);
+            rdoKnowsMurdererYes.Font = new Font("Segoe UI", 9F);
+            rdoKnowsMurdererYes.Location = new Point(6, 22);
             rdoKnowsMurdererYes.Name = "rdoKnowsMurdererYes";
             rdoKnowsMurdererYes.Size = new Size(42, 19);
             rdoKnowsMurdererYes.TabIndex = 5;
@@ -154,7 +127,8 @@ namespace CPW211_MurderMystery
             // rdoKnowsMurdererNo
             // 
             rdoKnowsMurdererNo.AutoSize = true;
-            rdoKnowsMurdererNo.Location = new Point(97, 27);
+            rdoKnowsMurdererNo.Font = new Font("Segoe UI", 9F);
+            rdoKnowsMurdererNo.Location = new Point(6, 47);
             rdoKnowsMurdererNo.Name = "rdoKnowsMurdererNo";
             rdoKnowsMurdererNo.Size = new Size(41, 19);
             rdoKnowsMurdererNo.TabIndex = 5;
@@ -164,9 +138,9 @@ namespace CPW211_MurderMystery
             // 
             // btnPrintInstructions
             // 
-            btnPrintInstructions.Location = new Point(181, 415);
+            btnPrintInstructions.Location = new Point(133, 367);
             btnPrintInstructions.Name = "btnPrintInstructions";
-            btnPrintInstructions.Size = new Size(119, 23);
+            btnPrintInstructions.Size = new Size(115, 23);
             btnPrintInstructions.TabIndex = 6;
             btnPrintInstructions.Text = "Print Instructions";
             btnPrintInstructions.UseVisualStyleBackColor = true;
@@ -174,9 +148,9 @@ namespace CPW211_MurderMystery
             // 
             // btnSaveGameInfo
             // 
-            btnSaveGameInfo.Location = new Point(320, 415);
+            btnSaveGameInfo.Location = new Point(254, 367);
             btnSaveGameInfo.Name = "btnSaveGameInfo";
-            btnSaveGameInfo.Size = new Size(112, 23);
+            btnSaveGameInfo.Size = new Size(115, 23);
             btnSaveGameInfo.TabIndex = 7;
             btnSaveGameInfo.Text = "Save Game Info";
             btnSaveGameInfo.UseVisualStyleBackColor = true;
@@ -184,50 +158,51 @@ namespace CPW211_MurderMystery
             // 
             // lstPlayers
             // 
-            lstPlayers.BackColor = SystemColors.Menu;
             lstPlayers.FormattingEnabled = true;
             lstPlayers.ItemHeight = 15;
-            lstPlayers.Location = new Point(141, 283);
+            lstPlayers.Location = new Point(133, 282);
             lstPlayers.Name = "lstPlayers";
-            lstPlayers.Size = new Size(144, 94);
+            lstPlayers.SelectionMode = SelectionMode.MultiSimple;
+            lstPlayers.Size = new Size(234, 79);
             lstPlayers.TabIndex = 8;
             // 
             // txtThemeSummary
             // 
-            txtThemeSummary.BackColor = Color.White;
             txtThemeSummary.BorderStyle = BorderStyle.None;
-            txtThemeSummary.Location = new Point(70, 198);
+            txtThemeSummary.Location = new Point(12, 203);
             txtThemeSummary.Multiline = true;
             txtThemeSummary.Name = "txtThemeSummary";
             txtThemeSummary.ReadOnly = true;
-            txtThemeSummary.Size = new Size(215, 79);
+            txtThemeSummary.Size = new Size(355, 71);
             txtThemeSummary.TabIndex = 9;
             // 
             // groupBoxHowToPlay
             // 
             groupBoxHowToPlay.Controls.Add(rdoPlayScripted);
             groupBoxHowToPlay.Controls.Add(rdoPlayImprovise);
-            groupBoxHowToPlay.Controls.Add(lblPlayImprovise);
-            groupBoxHowToPlay.Controls.Add(lblPlay);
-            groupBoxHowToPlay.Location = new Point(332, 179);
+            groupBoxHowToPlay.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
+            groupBoxHowToPlay.Location = new Point(373, 174);
             groupBoxHowToPlay.Name = "groupBoxHowToPlay";
-            groupBoxHowToPlay.Size = new Size(205, 100);
+            groupBoxHowToPlay.Size = new Size(216, 72);
             groupBoxHowToPlay.TabIndex = 10;
             groupBoxHowToPlay.TabStop = false;
+            groupBoxHowToPlay.Text = "How do you want to play?";
             // 
             // groupBoxKillerAwareOfIdentity
             // 
-            groupBoxKillerAwareOfIdentity.Controls.Add(lblKnowsMurderer);
             groupBoxKillerAwareOfIdentity.Controls.Add(rdoKnowsMurdererNo);
             groupBoxKillerAwareOfIdentity.Controls.Add(rdoKnowsMurdererYes);
-            groupBoxKillerAwareOfIdentity.Location = new Point(332, 285);
+            groupBoxKillerAwareOfIdentity.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
+            groupBoxKillerAwareOfIdentity.Location = new Point(373, 260);
             groupBoxKillerAwareOfIdentity.Name = "groupBoxKillerAwareOfIdentity";
-            groupBoxKillerAwareOfIdentity.Size = new Size(205, 63);
+            groupBoxKillerAwareOfIdentity.Size = new Size(216, 72);
             groupBoxKillerAwareOfIdentity.TabIndex = 11;
             groupBoxKillerAwareOfIdentity.TabStop = false;
+            groupBoxKillerAwareOfIdentity.Text = "Should the murderer know they're it?";
             // 
             // txtBoxInstructions
             // 
+            txtBoxInstructions.BackColor = SystemColors.Control;
             txtBoxInstructions.BorderStyle = BorderStyle.FixedSingle;
             txtBoxInstructions.Location = new Point(12, 12);
             txtBoxInstructions.Multiline = true;
@@ -237,12 +212,34 @@ namespace CPW211_MurderMystery
             txtBoxInstructions.TabIndex = 12;
             txtBoxInstructions.Text = resources.GetString("txtBoxInstructions.Text");
             // 
+            // btnRemoveAllPlayers
+            // 
+            btnRemoveAllPlayers.Location = new Point(12, 338);
+            btnRemoveAllPlayers.Name = "btnRemoveAllPlayers";
+            btnRemoveAllPlayers.Size = new Size(115, 23);
+            btnRemoveAllPlayers.TabIndex = 13;
+            btnRemoveAllPlayers.Text = "Remove All Players";
+            btnRemoveAllPlayers.UseVisualStyleBackColor = true;
+            btnRemoveAllPlayers.Click += btnRemoveAllPlayers_Click;
+            // 
+            // btnExit
+            // 
+            btnExit.Location = new Point(473, 367);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(115, 23);
+            btnExit.TabIndex = 14;
+            btnExit.Text = "Exit";
+            btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += btnExit_Click;
+            // 
             // PartyCreatorForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
-            ClientSize = new Size(600, 454);
+            BackColor = SystemColors.Control;
+            ClientSize = new Size(600, 401);
+            Controls.Add(btnExit);
+            Controls.Add(btnRemoveAllPlayers);
             Controls.Add(txtBoxInstructions);
             Controls.Add(groupBoxKillerAwareOfIdentity);
             Controls.Add(groupBoxHowToPlay);
@@ -273,17 +270,16 @@ namespace CPW211_MurderMystery
         private Button btnRemovePlayers;
         private RadioButton rdoPlayScripted;
         private RadioButton rdoPlayImprovise;
-        private Label lblPlayImprovise;
-        private Label lblPlay;
-        private Label lblKnowsMurderer;
         private RadioButton rdoKnowsMurdererYes;
         private RadioButton rdoKnowsMurdererNo;
         private Button btnPrintInstructions;
         private Button btnSaveGameInfo;
-        private ListBox lstPlayers;
         private TextBox txtThemeSummary;
         private GroupBox groupBoxHowToPlay;
         private GroupBox groupBoxKillerAwareOfIdentity;
         private TextBox txtBoxInstructions;
+        private Button btnRemoveAllPlayers;
+        private Button btnExit;
+        private ListBox lstPlayers;
     }
 }
