@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CPW211_MurderMystery
+﻿namespace CPW211_MurderMystery
 {
     public class CastAssignment
     {
@@ -17,24 +11,23 @@ namespace CPW211_MurderMystery
         public static void AssignCharacters(MurderMysteryContext context, int selectedThemeId)
         {
             // Get all players and the characters for the selected theme
-            var players = context.Players.ToList();
-            var characters = context.Characters
-                .Where(c => c.ThemeId == selectedThemeId)
-                .ToList();
+            List<Player> players = [.. context.Players];
+            List<Character> characters = [.. context.Characters
+                .Where(c => c.ThemeId == selectedThemeId)];
 
             // Loop through each player
-            foreach (var player in players)
+            foreach (Player player in players)
             {
                 // Get the player's gender preference
-                var genderPreference = player.GenderPreference;
+                string genderPreference = player.GenderPreference;
 
                 // Get the list of available characters that match the player's gender preference
-                var availableCharacters = characters.Where(c => c.Gender == genderPreference && !context.Players.Any(p => p.AssignedCharacterId == c.CharacterId)).ToList();
+                List<Character> availableCharacters = characters.Where(c => c.Gender == genderPreference && !context.Players.Any(p => p.AssignedCharacterId == c.CharacterId)).ToList();
 
-                Character assignedCharacter = null;
+                Character? assignedCharacter = null;
 
                 // If there are any available characters that match the player's gender preference
-                if (availableCharacters.Any())
+                if (availableCharacters.Count != 0)
                 {
                     // Assign a random character from the list of available characters
                     assignedCharacter = availableCharacters[new Random().Next(availableCharacters.Count)];
@@ -42,10 +35,10 @@ namespace CPW211_MurderMystery
                 else
                 {
                     // If no characters of the preferred gender are available, get the list of any remaining characters
-                    var remainingCharacters = characters.Where(c => !context.Players.Any(p => p.AssignedCharacterId == c.CharacterId)).ToList();
+                    List<Character> remainingCharacters = characters.Where(c => !context.Players.Any(p => p.AssignedCharacterId == c.CharacterId)).ToList();
 
                     // If there are any remaining characters
-                    if (remainingCharacters.Any())
+                    if (remainingCharacters.Count != 0)
                     {
                         // Assign a random character from the list of remaining characters
                         assignedCharacter = remainingCharacters[new Random().Next(remainingCharacters.Count)];
@@ -66,6 +59,5 @@ namespace CPW211_MurderMystery
             // Save the changes to the context
             context.SaveChanges();
         }
-
     }
 }

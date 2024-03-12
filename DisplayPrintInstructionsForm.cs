@@ -6,8 +6,8 @@
     /// </summary>
     public partial class DisplayPrintInstructionsForm : Form
     {
-        private Theme _theme;
-        private MurderMysteryContext _context;
+        private readonly Theme _theme;
+        private readonly MurderMysteryContext _context;
 
         /// <summary>
         /// The constructor takes a Theme object as a parameter and initializes the _theme and _context fields.
@@ -19,7 +19,7 @@
             InitializeComponent();
             _theme = theme;
             _context = new MurderMysteryContext();
-            this.FormClosed += DisplayPrintInstructionsForm_FormClosed;
+            FormClosed += DisplayPrintInstructionsForm_FormClosed;
         }
 
         // Sets the text of the rtbPrintThemeInfo control to the theme's title and summary,
@@ -31,30 +31,51 @@
             PopulateCastListBox();
         }
 
+        // The FormClosed event handler resets the AssignedCharacterId for all players and disposes of the _context object.
+        private void DisplayPrintInstructionsForm_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            _context.ResetAssignedCharacterId();
+            _context.Dispose();
+        }
+
         // Clears the list box and then adds the full name of each player and their assigned character.
         private void PopulateCastListBox()
         {
+
             lstPrintAssignedCast.Items.Clear();
-            List<string> castList = _context.Players
+            List<string> castList = [.. _context.Players
                 .Where(p => p.AssignedCharacterId != null)
-                .Select(p => $"{p.PlayerFullName} : {p.AssignedCharacter.FullName}")
-                .ToList();
-            foreach (var role in castList)
+                .Select(p => $"{p.PlayerName} {TrimGender(p.GenderPreference)}  :  {p.AssignedCharacter.FullName} {TrimGender(p.AssignedCharacter.Gender)}")];
+            foreach (string role in castList)
             {
                 lstPrintAssignedCast.Items.Add(role);
             }
         }
 
-        private void btnCloseResults_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Trims the Gender string to something smaller.
+        /// </summary>
+        /// <param name="gender"></param>
+        /// <returns>Returns a trimmed version of the string.</returns>
+        private static string TrimGender(string gender)
         {
-            this.Close();
+            if (gender == "Male")
+            {
+                return "[M]";
+            }
+            else if (gender == "Female")
+            {
+                return "[F]";
+            }
+            else
+            {
+                return "[NP]";
+            }
         }
 
-        // The FormClosed event handler resets the AssignedCharacterId for all players and disposes of the _context object.
-        private void DisplayPrintInstructionsForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void btnCloseResults_Click(object sender, EventArgs e)
         {
-            _context.ResetAssignedCharacterId();
-            _context.Dispose();
+            Close();
         }
 
         // The Click event handler for the FeatureInDevelopmentB button shows a message box that says "This feature is still being developed."
@@ -62,9 +83,10 @@
         {
             MessageBox.Show("This feature is still being developed.");
         }
+
+        private void btnPrintResults_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This feature is still being developed.");
+        }
     }
 }
-
-
-
-
