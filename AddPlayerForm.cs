@@ -26,7 +26,7 @@
         {
             using MurderMysteryContext context = new();
 
-            return context.Players.Any(p => p.PlayerFullName == playerName);
+            return context.Players.Any(p => p.PlayerName == playerName);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@
         {
             Player p = new()
             {
-                PlayerFullName = playerName,
+                PlayerName = playerName,
                 GenderPreference = playerGender
             };
 
@@ -74,6 +74,17 @@
         private static void UpdateListBox()
         {
             (Application.OpenForms["PartyCreatorForm"] as PartyCreatorForm)?.PopulateListBox();
+        }
+
+        /// <summary>
+        /// Get the number of Players from "lstPlayers" in the PartyCreatorForm.
+        /// </summary>
+        /// <returns>The number of Players.</returns>
+        private static int? PlayerCount()
+        {
+            int? count = (Application.OpenForms["PartyCreatorForm"] as PartyCreatorForm)?.GetPlayerCount();
+
+            return count;
         }
 
         /// <summary>
@@ -93,6 +104,13 @@
         /// <returns>True if valid.</returns>
         private static bool IsSubmissionValid(string playerName, string playerGender)
         {
+            if (PlayerCount() >= 5)
+            {
+                MessageBox.Show("No more Players can be added.");
+
+                return false;
+            }
+
             if (!ValidatePlayerName(playerName))
             {
                 MessageBox.Show("Please enter a name.");
@@ -159,6 +177,7 @@
         /// </summary>
         private void txtPlayerName_KeyPress(object sender, KeyPressEventArgs e)
         {
+            // Allows the use of the Space and Backspace buttons
             List<char> allowedChars = [' ', '\b'];
             e.Handled = !(char.IsLetterOrDigit(e.KeyChar) || allowedChars.Contains(e.KeyChar));
         }

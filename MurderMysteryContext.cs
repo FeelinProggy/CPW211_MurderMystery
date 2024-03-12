@@ -36,11 +36,11 @@ namespace CPW211_MurderMystery
             );
 
             modelBuilder.Entity<Player>().HasData(
-                new Player { PlayerId = 1, PlayerFullName = "Player One", GenderPreference = "Male", AssignedCharacterId = null },
-                new Player { PlayerId = 2, PlayerFullName = "Person Two", GenderPreference = "Female", AssignedCharacterId = null },
-                new Player { PlayerId = 4, PlayerFullName = "Person Four", GenderPreference = "Female", AssignedCharacterId = null },
-                new Player { PlayerId = 5, PlayerFullName = "Person Five", GenderPreference = "Female", AssignedCharacterId = null },
-                new Player { PlayerId = 3, PlayerFullName = "User Three", GenderPreference = "No preference", AssignedCharacterId = null }
+                new Player { PlayerId = 1, PlayerName = "Player One", GenderPreference = "Male", AssignedCharacterId = null },
+                new Player { PlayerId = 2, PlayerName = "Person Two", GenderPreference = "Female", AssignedCharacterId = null },
+                new Player { PlayerId = 3, PlayerName = "User Three", GenderPreference = "No Preference", AssignedCharacterId = null },
+                new Player { PlayerId = 4, PlayerName = "Attendee 4", GenderPreference = "Female", AssignedCharacterId = null },
+                new Player { PlayerId = 5, PlayerName = "Guest 5", GenderPreference = "Female", AssignedCharacterId = null }
             );
 
             modelBuilder.Entity<Theme>().HasData(
@@ -49,11 +49,11 @@ namespace CPW211_MurderMystery
                 new Theme { ThemeId = 3, Title = "Train", Summary = "This train is on a two hour nonstop trip to the next city over. As this specific route goes through the countryside, phone connections are spotty at best." }
             );
 
-            modelBuilder.Entity<Character>().ToTable(b => b.HasCheckConstraint("CK_Gender", "[Gender] IN ('Male', 'Female', 'No preference')"));
+            modelBuilder.Entity<Character>().ToTable(b => b.HasCheckConstraint("CK_Gender", "[Gender] IN ('Male', 'Female')"));
 
-            modelBuilder.Entity<Player>().HasIndex(b => b.PlayerFullName).IsUnique();
-            modelBuilder.Entity<Player>().ToTable(b => b.HasCheckConstraint("CK_PlayerGender", "[GenderPreference] IN ('Male', 'Female', 'No preference')"));
-            modelBuilder.Entity<Player>().ToTable(b => b.HasCheckConstraint("CK_PlayerFullName", "[PlayerFullName] NOT LIKE '%[^a-zA-Z0-9 ]%'"));
+            modelBuilder.Entity<Player>().HasIndex(b => b.PlayerName).IsUnique();
+            modelBuilder.Entity<Player>().ToTable(b => b.HasCheckConstraint("CK_PlayerName", "[PlayerName] NOT LIKE '%[^a-zA-Z0-9 ]%'"));
+            modelBuilder.Entity<Player>().ToTable(b => b.HasCheckConstraint("CK_GenderPreference", "[GenderPreference] IN ('Male', 'Female', 'No Preference')"));
 
             // Set up the foreign key relationship. One Theme to many characters
             modelBuilder.Entity<Character>().HasOne(c => c.Theme).WithMany(t => t.Characters).HasForeignKey(c => c.ThemeId);
@@ -63,11 +63,11 @@ namespace CPW211_MurderMystery
                 .WithOne()
                 .HasForeignKey<Player>(p => p.AssignedCharacterId)
                 .OnDelete(DeleteBehavior.Restrict);
-
         }
+
         public void ResetAssignedCharacterId()
         {
-            foreach (var player in Players)
+            foreach (Player player in Players)
             {
                 player.AssignedCharacterId = null;
             }

@@ -33,7 +33,6 @@
             rdoPlayerFemale = new RadioButton();
             rdoPlayerNone = new RadioButton();
             lblPlayerName = new Label();
-            lblCharacterPreference = new Label();
             btnSubmitSingle = new Button();
             btnSubmitMulti = new Button();
             btnClose = new Button();
@@ -43,15 +42,16 @@
             // 
             // txtPlayerName
             // 
-            txtPlayerName.Location = new Point(86, 12);
+            txtPlayerName.Location = new Point(95, 6);
             txtPlayerName.Name = "txtPlayerName";
-            txtPlayerName.Size = new Size(100, 23);
+            txtPlayerName.Size = new Size(158, 23);
             txtPlayerName.TabIndex = 1;
             txtPlayerName.KeyPress += txtPlayerName_KeyPress;
             // 
             // rdoPlayerMale
             // 
             rdoPlayerMale.AutoSize = true;
+            rdoPlayerMale.Font = new Font("Segoe UI", 9F);
             rdoPlayerMale.Location = new Point(6, 22);
             rdoPlayerMale.Name = "rdoPlayerMale";
             rdoPlayerMale.Size = new Size(51, 19);
@@ -63,6 +63,7 @@
             // rdoPlayerFemale
             // 
             rdoPlayerFemale.AutoSize = true;
+            rdoPlayerFemale.Font = new Font("Segoe UI", 9F);
             rdoPlayerFemale.Location = new Point(6, 47);
             rdoPlayerFemale.Name = "rdoPlayerFemale";
             rdoPlayerFemale.Size = new Size(63, 19);
@@ -74,6 +75,7 @@
             // rdoPlayerNone
             // 
             rdoPlayerNone.AutoSize = true;
+            rdoPlayerNone.Font = new Font("Segoe UI", 9F);
             rdoPlayerNone.Location = new Point(6, 72);
             rdoPlayerNone.Name = "rdoPlayerNone";
             rdoPlayerNone.Size = new Size(100, 19);
@@ -85,26 +87,17 @@
             // lblPlayerName
             // 
             lblPlayerName.AutoSize = true;
-            lblPlayerName.Location = new Point(6, 15);
+            lblPlayerName.Location = new Point(12, 9);
             lblPlayerName.Name = "lblPlayerName";
-            lblPlayerName.Size = new Size(74, 15);
+            lblPlayerName.Size = new Size(77, 15);
             lblPlayerName.TabIndex = 0;
-            lblPlayerName.Text = "Player Name";
-            // 
-            // lblCharacterPreference
-            // 
-            lblCharacterPreference.AutoSize = true;
-            lblCharacterPreference.Location = new Point(0, 0);
-            lblCharacterPreference.Name = "lblCharacterPreference";
-            lblCharacterPreference.Size = new Size(117, 15);
-            lblCharacterPreference.TabIndex = 0;
-            lblCharacterPreference.Text = "Character Preference";
+            lblPlayerName.Text = "Player Name:";
             // 
             // btnSubmitSingle
             // 
-            btnSubmitSingle.Location = new Point(229, 64);
+            btnSubmitSingle.Location = new Point(149, 79);
             btnSubmitSingle.Name = "btnSubmitSingle";
-            btnSubmitSingle.Size = new Size(104, 43);
+            btnSubmitSingle.Size = new Size(104, 38);
             btnSubmitSingle.TabIndex = 4;
             btnSubmitSingle.Text = "Submit and Close";
             btnSubmitSingle.UseVisualStyleBackColor = true;
@@ -112,9 +105,9 @@
             // 
             // btnSubmitMulti
             // 
-            btnSubmitMulti.Location = new Point(229, 15);
+            btnSubmitMulti.Location = new Point(149, 35);
             btnSubmitMulti.Name = "btnSubmitMulti";
-            btnSubmitMulti.Size = new Size(104, 43);
+            btnSubmitMulti.Size = new Size(104, 38);
             btnSubmitMulti.TabIndex = 3;
             btnSubmitMulti.Text = "Submit and Add Another Player";
             btnSubmitMulti.UseVisualStyleBackColor = true;
@@ -122,7 +115,7 @@
             // 
             // btnClose
             // 
-            btnClose.Location = new Point(229, 116);
+            btnClose.Location = new Point(149, 123);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(104, 26);
             btnClose.TabIndex = 5;
@@ -132,21 +125,22 @@
             // 
             // groupBoxGenderPref
             // 
-            groupBoxGenderPref.Controls.Add(lblCharacterPreference);
             groupBoxGenderPref.Controls.Add(rdoPlayerMale);
             groupBoxGenderPref.Controls.Add(rdoPlayerFemale);
             groupBoxGenderPref.Controls.Add(rdoPlayerNone);
-            groupBoxGenderPref.Location = new Point(69, 41);
+            groupBoxGenderPref.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
+            groupBoxGenderPref.Location = new Point(12, 52);
             groupBoxGenderPref.Name = "groupBoxGenderPref";
-            groupBoxGenderPref.Size = new Size(117, 100);
+            groupBoxGenderPref.Size = new Size(131, 97);
             groupBoxGenderPref.TabIndex = 6;
             groupBoxGenderPref.TabStop = false;
+            groupBoxGenderPref.Text = "Character Preference";
             // 
             // AddPlayerForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(367, 167);
+            ClientSize = new Size(262, 162);
             Controls.Add(groupBoxGenderPref);
             Controls.Add(btnClose);
             Controls.Add(btnSubmitMulti);
@@ -154,7 +148,7 @@
             Controls.Add(lblPlayerName);
             Controls.Add(txtPlayerName);
             Name = "AddPlayerForm";
-            Text = "AddPlayerForm";
+            Text = "Add Players";
             groupBoxGenderPref.ResumeLayout(false);
             groupBoxGenderPref.PerformLayout();
             ResumeLayout(false);
@@ -168,7 +162,6 @@
         private RadioButton rdoPlayerFemale;
         private RadioButton rdoPlayerNone;
         private Label lblPlayerName;
-        private Label lblCharacterPreference;
         private Button btnSubmitSingle;
         private Button btnSubmitMulti;
         private Button btnClose;

@@ -1,0 +1,8 @@
+[*.cs]
+
+# VSSpell001: Spell Check
+dotnet_diagnostic.VSSpell001.severity = none
+[*]
+vsspell_section_id = 4bd74177db724c459ba190d92313555d
+vsspell_ignored_words_4bd74177db724c459ba190d92313555d = CPW
+

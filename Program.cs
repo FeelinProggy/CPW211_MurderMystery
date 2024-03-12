@@ -6,20 +6,20 @@ using MurderMysteryContext context = new();
 
 Player p1 = new()
 {
-    PlayerFullName = "Player 1",
-    PlayerGender = "Mmale" // Invalid Gender
+    PlayerName = "Player 1",
+    GenderPreference = "Mmale" // Invalid Gender
 };
 
 Player p2 = new()
 {
-    PlayerFullName = ":Person 2:", // Invalid Name
-    PlayerGender = "Female"
+    PlayerName = ":Person 2:", // Invalid Name
+    GenderPreference = "Female"
 };
 
 Player p3 = new()
 {
-    PlayerFullName = "User Three", // Name already exists
-    PlayerGender = "No preference"
+    PlayerName = "User Three", // Name already exists
+    GenderPreference = "No Preference"
 };
 
 // Add to database
@@ -36,7 +36,7 @@ List<Player> allPlayers = [.. context.Players];
 StringBuilder displayAllPlayers = new();
 foreach (Player player in allPlayers)
 {
-    if (player.PlayerGender == "No preference")
+    if (player.PlayerGender == "No Preference")
     {
         displayAllPlayers.AppendLine($"{player.PlayerFullName} has {player.PlayerGender}");
     }

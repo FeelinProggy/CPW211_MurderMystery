@@ -22,36 +22,36 @@ namespace CPW211_MurderMystery
         /// Navigation property for the 
         /// Character's Theme.
         /// </summary>
-        public Theme Theme { get; set; }
+        public Theme? Theme { get; set; }
 
         /// <summary>
         /// The Characters first and last name.
         /// </summary>
         [StringLength(50)]
-        public string FullName { get; set; }
+        public required string FullName { get; set; }
 
         /// <summary>
         /// The Characters gender.
         /// </summary>
-        [StringLength(13)]
-        public string Gender { get; set; }
+        [StringLength(6)]
+        public required string Gender { get; set; }
 
         /// <summary>
         /// The Characters job.
         /// </summary>
         [StringLength(50)]
-        public string Occupation { get; set; }
+        public required string Occupation { get; set; }
 
         /// <summary>
         /// The Character's quotes.
         /// </summary>
         [StringLength(500)]
-        public string CharScript { get; set; }
+        public required string CharScript { get; set; }
 
         /// <summary>
         /// The Description of the character and their personality.
         /// </summary>
         [StringLength(500)]
-        public string Desc { get; set; }
+        public required string Desc { get; set; }
     }
 }

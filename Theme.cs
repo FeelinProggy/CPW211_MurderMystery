@@ -17,18 +17,18 @@ namespace CPW211_MurderMystery
         /// The Theme title.
         /// </summary>
         [StringLength(50)]
-        public string Title { get; set; }
+        public required string Title { get; set; }
 
         /// <summary>
         /// The Theme Summary.
         /// </summary>
         [StringLength(500)]
-        public string Summary { get; set; }
+        public required string Summary { get; set; }
 
         /// <summary>
         /// Navigation property for the 
         /// Characters in the Theme.
         /// </summary>
-        public ICollection<Character> Characters { get; set; } 
+        public ICollection<Character>? Characters { get; set; } 
     }
 }
