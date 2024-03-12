@@ -14,19 +14,22 @@ namespace CPW211_MurderMystery
         public int PlayerId { get; set; }
 
         /// <summary>
-        /// The Player name.
+        /// The Players name or alias.
         /// </summary>
         [StringLength(50)]
-        public string PlayerFullName { get; set; }
+        public required string PlayerName { get; set; }
 
         /// <summary>
-        /// The Player gender.
+        /// The Players gender preference.
         /// </summary>
         [StringLength(13)]
-        public string GenderPreference { get; set; }
+        public required string GenderPreference { get; set; }
+
 
         public int? AssignedCharacterId { get; set; }
-        public Character AssignedCharacter { get; set; }
+
+
+        public Character? AssignedCharacter { get; set; }
 
     }
 }

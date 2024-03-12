@@ -26,7 +26,7 @@
         {
             using MurderMysteryContext context = new();
 
-            return context.Players.Any(p => p.PlayerFullName == playerName);
+            return context.Players.Any(p => p.PlayerName == playerName);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@
         {
             Player p = new()
             {
-                PlayerFullName = playerName,
+                PlayerName = playerName,
                 GenderPreference = playerGender
             };
 

@@ -18,7 +18,7 @@ namespace CPW211_MurderMystery
             lstPlayers.Items.Clear();
 
             using MurderMysteryContext context = new();
-            List<string> playerList = [.. context.Players.Select(p => $"{p.PlayerFullName} : {p.GenderPreference}")];
+            List<string> playerList = [.. context.Players.Select(p => $"{p.PlayerName} : {p.GenderPreference}")];
 
             foreach (string playerData in playerList)
             {
