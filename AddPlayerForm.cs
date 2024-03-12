@@ -77,6 +77,17 @@
         }
 
         /// <summary>
+        /// Get the number of Players from "lstPlayers" in the PartyCreatorForm.
+        /// </summary>
+        /// <returns>The number of Players.</returns>
+        private static int? PlayerCount()
+        {
+            int? count = (Application.OpenForms["PartyCreatorForm"] as PartyCreatorForm)?.GetPlayerCount();
+
+            return count;
+        }
+
+        /// <summary>
         /// Resets the AddPlayerForm.
         /// </summary>
         private void ResetForm()
@@ -93,6 +104,13 @@
         /// <returns>True if valid.</returns>
         private static bool IsSubmissionValid(string playerName, string playerGender)
         {
+            if (PlayerCount() >= 5)
+            {
+                MessageBox.Show("No more Players can be added.");
+
+                return false;
+            }
+
             if (!ValidatePlayerName(playerName))
             {
                 MessageBox.Show("Please enter a name.");
@@ -159,6 +177,7 @@
         /// </summary>
         private void txtPlayerName_KeyPress(object sender, KeyPressEventArgs e)
         {
+            // Allows the use of the Space and Backspace buttons
             List<char> allowedChars = [' ', '\b'];
             e.Handled = !(char.IsLetterOrDigit(e.KeyChar) || allowedChars.Contains(e.KeyChar));
         }

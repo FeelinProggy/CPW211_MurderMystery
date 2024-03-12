@@ -9,70 +9,6 @@ namespace CPW211_MurderMystery
             InitializeComponent();
             PopulateListBox();
         }
-
-        /// <summary>
-        /// Clears "lstPlayers" then populates it with data from the Players table.
-        /// </summary>
-        public void PopulateListBox()
-        {
-            lstPlayers.Items.Clear();
-
-            using MurderMysteryContext context = new();
-            List<string> playerList = [.. context.Players.Select(p => $"{p.PlayerName} : {p.GenderPreference}")];
-
-            foreach (string playerData in playerList)
-            {
-                lstPlayers.Items.Add(playerData);
-            }
-        }
-
-        /// <summary>
-        /// Removes the selected Player from the database and "lstPlayers".
-        /// </summary>
-        /// <param name="playerToRemove"></param>
-        private void RemovePlayer(string playerToRemove)
-        {
-            using MurderMysteryContext context = new();
-            Player? selectedPlayer = context.Players.FirstOrDefault(p => p.PlayerFullName == playerToRemove);
-
-            if (selectedPlayer != null)
-            {
-                context.Players.Remove(selectedPlayer);
-                context.SaveChanges();
-                lstPlayers.Items.RemoveAt(lstPlayers.SelectedIndex);
-            }
-        }
-
-        /// <summary>
-        /// Trims "lstPlayers" selected item so only the Player Name is left.
-        /// </summary>
-        /// <param name="playerName"></param>
-        /// <returns>Returns a trimmed version of the string.</returns>
-        private static string TrimPlayerName(string playerName)
-        {
-            int index = playerName.IndexOf(" :");
-
-            return index >= 0 ? playerName[..index] : playerName;
-        }
-
-        private void btnAddPlayers_Click(object sender, EventArgs e)
-        {
-            using AddPlayerForm addPlayer = new();
-            addPlayer.ShowDialog();
-        }
-
-        private void btnRemovePlayers_Click(object sender, EventArgs e)
-        {
-            if (lstPlayers.SelectedItem is string playerName)
-            {
-                RemovePlayer(TrimPlayerName(playerName));
-            }
-            else
-            {
-                MessageBox.Show("Select a Player from the list to remove.");
-            }
-        }
-
         private void PartyCreatorForm_Load(object sender, EventArgs e)
         {
             using MurderMysteryContext context = new(); // Initialize your context
@@ -97,11 +33,142 @@ namespace CPW211_MurderMystery
             }
         }
 
+        /// <summary>
+        /// Clears "lstPlayers" then populates it with data from the Players table.
+        /// </summary>
+        public void PopulateListBox()
+        {
+            lstPlayers.Items.Clear();
+
+            using MurderMysteryContext context = new();
+            List<string> playerList = [.. context.Players.Select(p => $"{p.PlayerName} : {p.GenderPreference}")];
+
+            foreach (string playerData in playerList)
+            {
+                lstPlayers.Items.Add(playerData);
+            }
+        }
+
+        /// <summary>
+        /// Get the number of Players from "lstPlayers".
+        /// </summary>
+        /// <returns>The number of Players.</returns>
+        public int? GetPlayerCount()
+        {
+            return lstPlayers.Items.Count;
+        }
+
+        /// <summary>
+        /// Removes the selected Players from the database and "lstPlayers".
+        /// </summary>
+        private void RemoveSelectedPlayers()
+        {
+            using MurderMysteryContext context = new();
+
+            ListBox.SelectedObjectCollection selectedItems = lstPlayers.SelectedItems;
+
+            if (selectedItems.Count > 0)
+            {
+                foreach (string? selectedPlayer in selectedItems.Cast<string>())
+                {
+                    string playerName = TrimPlayerName(selectedPlayer);
+                    Player? player = context.Players.FirstOrDefault(p => p.PlayerName == playerName);
+                    if (player != null)
+                    {
+                        context.Players.Remove(player);
+                        context.SaveChanges();
+                    }
+                }
+
+                // Remove selected items from the "lstPlayers".
+                foreach (string? selectedPlayer in selectedItems.Cast<string>().ToList())
+                {
+                    lstPlayers.Items.Remove(selectedPlayer);
+                }
+            }
+        }
+
+        private void RemoveAllPlayers()
+        {
+            using MurderMysteryContext context = new();
+
+            foreach (string? selectedPlayer in lstPlayers.Items.Cast<string>())
+            {
+                string playerName = TrimPlayerName(selectedPlayer);
+                Player? player = context.Players.FirstOrDefault(p => p.PlayerName == playerName);
+                if (player != null)
+                {
+                    context.Players.Remove(player);
+                    context.SaveChanges();
+                }
+            }
+
+            lstPlayers.Items.Clear();
+        }
+
+        /// <summary>
+        /// Trims "lstPlayers" selected item so only the Player Name is left.
+        /// </summary>
+        /// <param name="playerName"></param>
+        /// <returns>Returns a trimmed version of the string.</returns>
+        private static string TrimPlayerName(string playerName)
+        {
+            int index = playerName.IndexOf(" :");
+
+            return index >= 0 ? playerName[..index] : playerName;
+        }
+
+        private void btnAddPlayers_Click(object sender, EventArgs e)
+        {
+            if (GetPlayerCount() >= 5)
+            {
+                MessageBox.Show("No more Players can be added.");
+            }
+            else
+            {
+                using AddPlayerForm addPlayer = new();
+                addPlayer.ShowDialog();
+            }
+        }
+
+        private void btnRemovePlayers_Click(object sender, EventArgs e)
+        {
+            if (lstPlayers.SelectedIndices.Count > 0)
+            {
+                RemoveSelectedPlayers();
+            }
+            else if (lstPlayers.SelectedIndices.Count == 0 && GetPlayerCount() != 0)
+            {
+                MessageBox.Show("Select one or more Players from the list to remove.");
+            }
+            else
+            {
+                MessageBox.Show("There are no Players to remove.");
+            }
+        }
+
+        private void btnRemoveAllPlayers_Click(object sender, EventArgs e)
+        {
+            if (GetPlayerCount() != 0)
+            {
+                RemoveAllPlayers();
+            }
+            else
+            {
+                MessageBox.Show("There are no Players to remove.");
+            }
+        }
+
+
         private void btnPrintInstructions_Click(object sender, EventArgs e)
         {
-            if (cboTheme.SelectedItem is Theme selectedTheme && selectedTheme.ThemeId != 1)
+            if (GetPlayerCount() == 0)
             {
-                DisplayPrintInstructionsForm displayGame = new(selectedTheme);
+                MessageBox.Show("Add Players using the [Add Players] button.");
+            }
+            else if (cboTheme.SelectedItem is Theme selectedTheme && selectedTheme.ThemeId != 1)
+            {
+                using DisplayPrintInstructionsForm displayGame = new(selectedTheme);
                 displayGame.ShowDialog();
             }
             else
@@ -113,6 +180,11 @@ namespace CPW211_MurderMystery
         private void FeatureInDevelopmentA_Click(object sender, EventArgs e)
         {
             MessageBox.Show("This feature is still being developed.");
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

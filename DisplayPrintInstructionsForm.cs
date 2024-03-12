@@ -83,10 +83,5 @@
         {
             MessageBox.Show("This feature is still being developed.");
         }
-
-        private void btnPrintResults_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("This feature is still being developed.");
-        }
     }
 }
